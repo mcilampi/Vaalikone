@@ -41,18 +41,18 @@ public class RegisterServlet extends HttpServlet{
 		// try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone","hannu","kukkuu123");
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		try {
-			PreparedStatement ps = con.prepareStatement(INSERT_QUERY);{
+			PreparedStatement prepared = con.prepareStatement(INSERT_QUERY);{
 			//SET THE VALUES
-			ps.setString(1, etunimi);
-			ps.setString(2, sukunimi);
-			ps.setString(3, puolue);
-			ps.setString(4, esittely);
-			ps.setString(5, ehdokasnumero);
-			ps.setString(6, kayttajanimi);
-			ps.setString(7, salasana);
+			prepared.setString(1, etunimi);
+			prepared.setString(2, sukunimi);
+			prepared.setString(3, puolue);
+			prepared.setString(4, esittely);
+			prepared.setString(5, ehdokasnumero);
+			prepared.setString(6, kayttajanimi);
+			prepared.setString(7, salasana);
 			
 			//execute the query
-			int count= ps.executeUpdate();
+			int count= prepared.executeUpdate();
 			
 			if(count==0) {
 				pw.println("Candidate not stored into database");
