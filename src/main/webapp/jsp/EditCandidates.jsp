@@ -36,12 +36,16 @@
 <body class="container-fluid">
 	<div class="card" id="div1">
 		<h2 class="card-header text-center text-light bg-primary">Edit candidates</h2>
+		<table>
 		
-		<ol>
+		<c:set var="count" value="1" scope="page" />
+		
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<li>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()} <a href='/delete?id=${ehdokas.getId()}'>Delete</a> <a href='/edit?id=${ehdokas.getId()}'>Edit</a> 
+				<tr><td>${count}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}'>Delete</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Edit</a> </td></tr>
+				<c:set var="count" value="${count + 1}" scope="page"/>
 			</c:forEach>
-		</ol>		
+		
+		</table>		
 		<p><a href='index.html'>Return to the admin page</a>
 		
 	</div>
