@@ -82,16 +82,16 @@ public class Dao {
 	public static int updateEntry(Connection con, Ehdokas ehdokas) {
 		int rowsAffected = 0;
 		try {
-			PreparedStatement prepared = con.prepareStatement("UPDATE ehdokkaat SET etunimi = ?, sukunimi = ?, puolue = ?, esittely = ?, ehdokasnumero = ?, kayttajanimi = ?, salasana = ?  WHERE id = ?");
+			PreparedStatement prepared = con.prepareStatement("UPDATE ehdokkaat SET etunimi = ?, sukunimi = ?, puolue = ?, esittely = ?, ehdokasnumero = ? WHERE ehdokasID = ?");
 			prepared.setString(1, ehdokas.getEtunimi());
-			prepared.setString(1, ehdokas.getSukunimi());
-			prepared.setString(1, ehdokas.getPuolue());
-			prepared.setString(1, ehdokas.getEsittely());
-			prepared.setInt(1, ehdokas.getEhdokasNumero());
-			prepared.setString(1, ehdokas.getKayttajanimi());
-			prepared.setString(1, ehdokas.getSalasana());
+			prepared.setString(2, ehdokas.getSukunimi());
+			prepared.setString(3, ehdokas.getPuolue());
+			prepared.setString(4, ehdokas.getEsittely());
+			prepared.setInt(5, ehdokas.getEhdokasNumero());
+			prepared.setInt(6, ehdokas.getId());
 			rowsAffected = prepared.executeUpdate();
 		} catch (SQLException e) {	
+			System.out.println("Tästä lähtee updateEntryn stacktrace");
 			e.printStackTrace();
 		}		
 		return rowsAffected;

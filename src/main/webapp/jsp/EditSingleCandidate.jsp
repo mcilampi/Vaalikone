@@ -40,8 +40,15 @@ esittely{
 <body>
 <div class="card" id="div1">
 		<h2 class="card-header text-center text-light bg-primary">Edit candidate</h2>
-		<form action="update" method="post">
+		<form action="Update" method="post">
 		<table>
+				<tr>
+			<td>
+			Ehdokkaan ID
+			</td><td>
+			 <input type ="text" name="id" value="${requestScope.ehdokas.getId()}" readonly><br>
+			 </td>
+		 </tr>
 		<tr>
 			<td>
 			Etunimi:
@@ -79,6 +86,9 @@ esittely{
 			<input type ="number" name="ehdokasnumero" value="${requestScope.ehdokas.getEhdokasNumero()}"><br>
 			</td>
 		</tr>
+		</table>
+
+
 		</table>
 		<tr>
 			<td>
