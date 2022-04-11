@@ -3,6 +3,7 @@ import data.Ehdokas;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +34,9 @@ public class EditSingleCandidate extends HttpServlet {
 		int ehdokasId = Integer.parseInt(request.getParameter("id"));
 		Ehdokas ehdokas = Dao.readOneEhdokasFromDatabase(con, Dao.query, ehdokasId);
 		ehdokas.printEhdokas();
-		
+		request.setAttribute("ehdokas", ehdokas);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditSingleCandidate.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
