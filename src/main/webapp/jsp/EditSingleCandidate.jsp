@@ -80,6 +80,11 @@ esittely{
 			</td>
 		</tr>
 		</table>
+		<tr>
+			<td>
+			<input type='submit' name='update' value='Update'>
+			</td>
+		</tr> 
 		</form>
 			
 		<p><a href='index.html'>Return to the admin page</a>
