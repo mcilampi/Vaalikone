@@ -8,16 +8,80 @@
 <head>
 <meta charset="UTF-8">
 <title>Edit candidate information</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+#div1 {
+	width: 500px;
+	height: 600px;
+	margin: auto;
+	margin-top: 100px;
+}
+label,
+esittely{
+	display:inline-block;
+  	vertical-align:middle;
+}
+</style>
 </head>
 <body>
 <div class="card" id="div1">
 		<h2 class="card-header text-center text-light bg-primary">Edit candidate</h2>
-		
-		<ol>
-			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<li>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()} <a href='/delete?id=${ehdokas.getId()}'>Delete</a> <a href='/edit?id=${ehdokas.getId()}'>Edit</a> 
-			</c:forEach>
-		</ol>		
+		<form action="update" method="post">
+		<table>
+		<tr>
+			<td>
+			Etunimi:
+			</td><td>
+			 <input type ="text" name="etunimi" value="${requestScope.ehdokas.getEtunimi()}"><br>
+			 </td>
+		 </tr>
+		 <tr>
+		 	<td>
+			Sukunimi: 
+			</td>
+			<td><input type ="text" name="sukunimi" value="${requestScope.ehdokas.getSukunimi()}"><br>
+			</td>
+		</tr>
+		<tr>
+		 	<td>
+			Puolue:
+			</td>
+			<td> 
+			<input type ="text" name="puolue" value="${requestScope.ehdokas.getPuolue()}"><br>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Esittely: 
+			</td>
+			<td><textarea id="esittely" name="esittely" rows="15" cols="35">${requestScope.ehdokas.getEsittely()}</textarea><br>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Ehdokasnumero: 
+			</td>
+			<td>
+			<input type ="number" name="ehdokasnumero" value="${requestScope.ehdokas.getEhdokasNumero()}"><br>
+			</td>
+		</tr>
+		</table>
+		</form>
+			
 		<p><a href='index.html'>Return to the admin page</a>
 		
 	</div>
