@@ -53,7 +53,7 @@ public class Dao {
 	}
     
     // returns only one ehdokas object that has it's attributes read from the database columns
-    public static Ehdokas readOneCatFromDatabase(Connection con, String query, int annettuEhdokas) {
+    public static Ehdokas readOneEhdokasFromDatabase(Connection con, String query, int annettuEhdokas) {
     	Ehdokas ehdokas = new Ehdokas();
     	try {
 			PreparedStatement prepared = con.prepareStatement(query);
