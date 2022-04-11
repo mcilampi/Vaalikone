@@ -23,19 +23,19 @@ public class RegisterServlet extends HttpServlet{
 	private static final String INSERT_QUERY ="INSERT INTO ehdokkaat(etunimi,sukunimi,puolue,esittely,ehdokasnumero,kayttajanimi,salasana) VALUES(?,?,?,?,?,?,?)";
 		
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get PrintWriter
-		PrintWriter pw = res.getWriter();
+		PrintWriter pw = response.getWriter();
 		//set content type
-		res.setContentType("text/html");
+		response.setContentType("text/html");
 		//Read the form values
-		String etunimi = req.getParameter("etunimi");
-		String sukunimi = req.getParameter("sukunimi");
-		String puolue = req.getParameter("puolue");
-		String esittely = req.getParameter("esittely");
-		String ehdokasnumero = req.getParameter("ehdokasnumero");
-		String kayttajanimi = req.getParameter("kayttajanimi");
-		String salasana = req.getParameter("salasana");
+		String etunimi = request.getParameter("etunimi");
+		String sukunimi = request.getParameter("sukunimi");
+		String puolue = request.getParameter("puolue");
+		String esittely = request.getParameter("esittely");
+		String ehdokasnumero = request.getParameter("ehdokasnumero");
+		String kayttajanimi = request.getParameter("kayttajanimi");
+		String salasana = request.getParameter("salasana");
 		
 		//create the connection
 		// try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone","hannu","kukkuu123");
