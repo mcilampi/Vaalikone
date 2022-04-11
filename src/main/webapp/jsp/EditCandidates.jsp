@@ -42,6 +42,7 @@
 				<li>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()} <a href='/delete?id=${ehdokas.getId()}'>Delete</a> <a href='/edit?id=${ehdokas.getId()}'>Edit</a> 
 			</c:forEach>
 		</ol>		
+		<p><a href='index.html'>Return to the admin page</a>
 		
 	</div>
 </body>
