@@ -38,8 +38,10 @@ public class RegisterServlet extends HttpServlet{
 		String salasana = req.getParameter("salasana");
 		
 		//create the connection
-		try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone","hannu","kukkuu123");
-				PreparedStatement ps = con.prepareStatement(INSERT_QUERY);){
+		// try(Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone","hannu","kukkuu123");
+		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
+		try {
+			PreparedStatement ps = con.prepareStatement(INSERT_QUERY);{
 			//SET THE VALUES
 			ps.setString(1, etunimi);
 			ps.setString(2, sukunimi);
@@ -58,9 +60,7 @@ public class RegisterServlet extends HttpServlet{
 				pw.println("Candidate succesfully stored into database");
 				pw.println("<p><a href='index.html'>Return to the admin page</a>");
 			}
-			}catch(SQLException se) {
-				pw.println(se.getMessage());
-				se.printStackTrace();
+			} 
 			}catch(Exception e) {
 				pw.println(e.getMessage());
 				e.printStackTrace();
