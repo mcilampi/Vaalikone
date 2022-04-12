@@ -38,14 +38,14 @@
 		<h2 class="card-header text-center text-light bg-primary">Edit candidates</h2>
 		<table>
 		
-		
+			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<tr><td>${ehdokas.getId()}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Are you sure?')">Delete</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Edit</a> </td></tr>
-				<c:set var="count" value="${count + 1}" scope="page"/>
+				<tr><td>${counter}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Are you sure?')">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Muokkaa</a> </td></tr>
+				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		
 		</table>		
-		<p><a href='index.html'>Return to the admin page</a>
+		<p><a href='index.html'>Palaa ylläpitosivulle</a>
 		
 	</div>
 </body>
