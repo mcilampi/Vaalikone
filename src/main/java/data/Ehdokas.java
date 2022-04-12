@@ -1,4 +1,5 @@
 package data;
+import java.util.Comparator;
 
 public class Ehdokas {
 	
@@ -112,8 +113,5 @@ public class Ehdokas {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
-	
 
 }
