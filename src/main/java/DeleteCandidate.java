@@ -31,7 +31,7 @@ public class DeleteCandidate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		PrintWriter pw = response.getWriter();
-		response.setContentType("text/html");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		int ehdokasId = Integer.parseInt(request.getParameter("id"));
 		int rowsAffected = Dao.deleteCandidate(con, ehdokasId);

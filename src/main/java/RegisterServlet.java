@@ -21,7 +21,7 @@ public class RegisterServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter pw = response.getWriter();
-		response.setContentType("text/html");
+		response.setContentType("text/html; charset=UTF-8");
 
 		// create the connection
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
