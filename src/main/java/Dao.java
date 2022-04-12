@@ -13,6 +13,20 @@ public class Dao {
 	static String password = "kukkuu123";
 	static String query = "select * from ehdokkaat";
 
+	// delete candidate from database
+	public static int deleteCandidate(Connection con, int candidateId) {
+		int rowsAffected = 0;
+		try {
+			PreparedStatement prepared = con.prepareStatement("DELETE FROM ehdokkaat WHERE ehdokasID = ?");
+			prepared.setInt(1, candidateId);
+			rowsAffected = prepared.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Cannot delete candidate.");
+			e.printStackTrace();
+		}
+		return rowsAffected;
+	}
+	
 	// create connection to database;
 
 	public static Connection createDatabaseConnection(String DBpath, String username, String password) {

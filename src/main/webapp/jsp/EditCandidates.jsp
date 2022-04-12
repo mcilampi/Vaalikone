@@ -40,7 +40,7 @@
 		
 		
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<tr><td>${ehdokas.getId()}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}'>Delete</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Edit</a> </td></tr>
+				<tr><td>${ehdokas.getId()}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Are you sure?')">Delete</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Edit</a> </td></tr>
 				<c:set var="count" value="${count + 1}" scope="page"/>
 			</c:forEach>
 		
