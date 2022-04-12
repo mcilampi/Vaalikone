@@ -3,6 +3,8 @@ import data.Ehdokas;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+ 	
 
 /**
  * Servlet implementation class editCandidates
@@ -31,8 +36,15 @@ public class editCandidates extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int sorter = Integer.parseInt(request.getParameter("sorter"));
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		ArrayList<Ehdokas> ehdokkaat = Dao.readFromDatabase(con, Dao.query);
+		if (sorter == 1) {
+			Collections.sort(ehdokkaat, new NameComparator());
+		} else if (sorter == 2) {
+			Collections.sort(ehdokkaat, new NumberComparator());
+		}
+
 		request.setAttribute("ehdokasLista", ehdokkaat);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditCandidates.jsp");
