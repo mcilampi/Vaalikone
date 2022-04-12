@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,6 +50,13 @@ public class Update extends HttpServlet {
 		}else {
 			pw.println("Database succesfully updated!");
 			pw.println("<p><a href='index.html'>Return to the admin page</a>");
+		}
+		pw.close();
+		try {
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("Not able to close database connection.");
+			e.printStackTrace();
 		}
 	}
 

@@ -13,6 +13,26 @@ public class Dao {
 	static String password = "kukkuu123";
 	static String query = "select * from ehdokkaat";
 
+	// insert candidate into database
+	public static int createCandidate(Connection con, Ehdokas ehdokas) {
+		int rowsAffected = 0;
+		try {
+			PreparedStatement prepared = con.prepareStatement("INSERT INTO ehdokkaat(etunimi,sukunimi,puolue,esittely,ehdokasnumero,kayttajanimi,salasana) VALUES(?,?,?,?,?,?,?)");
+			prepared.setString(1, ehdokas.getEtunimi());
+			prepared.setString(2, ehdokas.getSukunimi());
+			prepared.setString(3, ehdokas.getPuolue());
+			prepared.setString(4, ehdokas.getEsittely());
+			prepared.setInt(5, ehdokas.getEhdokasNumero());
+			prepared.setString(6, ehdokas.getKayttajanimi());
+			prepared.setString(7, ehdokas.getSalasana());
+			rowsAffected = prepared.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Unable to add candidate to database.");
+			e.printStackTrace();
+		}
+		return rowsAffected;
+	}
+	
 	// delete candidate from database
 	public static int deleteCandidate(Connection con, int candidateId) {
 		int rowsAffected = 0;

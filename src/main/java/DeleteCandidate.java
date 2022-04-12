@@ -1,10 +1,9 @@
 
-import data.Ehdokas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +42,13 @@ public class DeleteCandidate extends HttpServlet {
 			pw.println("Candidate succesfully deleted!");
 			pw.println("<p><a href='index.html'>Return to the admin page</a>");
 		}
-		
+		pw.close();
+		try {
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("Not able to close database connection.");
+			e.printStackTrace();
+		}
 	}
 
 }

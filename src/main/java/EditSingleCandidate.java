@@ -2,6 +2,7 @@
 import data.Ehdokas;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,6 +38,12 @@ public class EditSingleCandidate extends HttpServlet {
 		request.setAttribute("ehdokas", ehdokas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditSingleCandidate.jsp");
 		dispatcher.forward(request, response);
+		try {
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("Not able to close database connection.");
+			e.printStackTrace();
+		}
 	}
 
 }
