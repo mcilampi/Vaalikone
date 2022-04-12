@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit candidate information</title>
+<title>Muokkaa ehdokkaan tietoja</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -39,12 +39,12 @@ esittely{
 </head>
 <body>
 <div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Edit candidate</h2>
+		<h2 class="card-header text-center text-light bg-primary">Muokkaa ehdokkaan tietoja</h2>
 		<form action="Update" method="post">
 		<table>
 				<tr>
 			<td>
-			Ehdokkaan ID
+			Ehdokkaan ID 
 			</td><td>
 			 <input type ="text" name="id" value="${requestScope.ehdokas.getId()}" readonly><br>
 			 </td>
@@ -92,12 +92,12 @@ esittely{
 		</table>
 		<tr>
 			<td>
-			<input type='submit' name='update' value='Update'>
+			<input type='submit' name='update' value='Tallenna tiedot'>
 			</td>
 		</tr> 
 		</form>
 			
-		<p><a href='index.html'>Return to the admin page</a>
+		<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle tallentamatta muutoksia</a>
 		
 	</div>
 </body>
