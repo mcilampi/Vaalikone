@@ -41,7 +41,7 @@ public class EditSingleCandidate extends HttpServlet {
 		try {
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Not able to close database connection.");
+			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
 			e.printStackTrace();
 		}
 	}

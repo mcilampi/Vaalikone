@@ -38,10 +38,10 @@ public class RegisterServlet extends HttpServlet{
 		int rowsAffected = Dao.createCandidate(con, ehdokas);
 			
 		if(rowsAffected == 0) {
-			pw.println("Candidate not stored into database");
+			pw.println("Ehdokasta ei tallennettu tietokantaan.");
 		}else {
-			pw.println("Candidate succesfully stored into database");
-			pw.println("<p><a href='index.html'>Return to the admin page</a>");
+			pw.println("Ehdokas lisätty tietokantaan.");
+			pw.println("<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle.</a>");
 		}		
 		
 		//close the stream
@@ -49,14 +49,9 @@ public class RegisterServlet extends HttpServlet{
 		try {
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Not able to close database connection.");
+			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
 			e.printStackTrace();
 		}
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(req, resp);
-	}
+
 }

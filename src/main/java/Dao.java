@@ -27,7 +27,7 @@ public class Dao {
 			prepared.setString(7, ehdokas.getSalasana());
 			rowsAffected = prepared.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("Unable to add candidate to database.");
+			System.out.println("Ei voitu lisätä ehdokasta tietokantaan.");
 			e.printStackTrace();
 		}
 		return rowsAffected;
@@ -41,7 +41,7 @@ public class Dao {
 			prepared.setInt(1, candidateId);
 			rowsAffected = prepared.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("Cannot delete candidate.");
+			System.out.println("Ehdokkaan poistaminen ei onnistunut.");
 			e.printStackTrace();
 		}
 		return rowsAffected;
@@ -55,7 +55,7 @@ public class Dao {
 			con = DriverManager.getConnection("jdbc:mysql:" + DBpath,username,password);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Database not connected.");
+			System.out.println("Tietokantayhteyttä ei muodostettu.");
 		}
 		return con;
 	}
@@ -125,7 +125,6 @@ public class Dao {
 			prepared.setInt(6, ehdokas.getId());
 			rowsAffected = prepared.executeUpdate();
 		} catch (SQLException e) {	
-			System.out.println("Tästä lähtee updateEntryn stacktrace");
 			e.printStackTrace();
 		}		
 		return rowsAffected;

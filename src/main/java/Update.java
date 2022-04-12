@@ -46,16 +46,16 @@ public class Update extends HttpServlet {
 		int rowsAffected = Dao.updateEntry(con, ehdokas);
 		
 		if(rowsAffected == 0) {
-			pw.println("Database not updated!");
+			pw.println("Ehdokkaan tietojen päivitys ei onnistunut.");
 		}else {
-			pw.println("Database succesfully updated!");
-			pw.println("<p><a href='index.html'>Return to the admin page</a>");
+			pw.println("Ehdokkaan tietojen päivitys onnistui!");
+			pw.println("<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle.</a>");
 		}
 		pw.close();
 		try {
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Not able to close database connection.");
+			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
 			e.printStackTrace();
 		}
 	}

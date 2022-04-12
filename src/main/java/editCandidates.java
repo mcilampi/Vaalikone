@@ -38,8 +38,7 @@ public class editCandidates extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditCandidates.jsp");
 		dispatcher.forward(request, response);
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+			
 	}
 
 	

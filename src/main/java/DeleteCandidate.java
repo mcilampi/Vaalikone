@@ -37,16 +37,16 @@ public class DeleteCandidate extends HttpServlet {
 		int rowsAffected = Dao.deleteCandidate(con, ehdokasId);
 		
 		if(rowsAffected == 0) {
-			pw.println("Candidate not deleted from database.");
+			pw.println("Ei voitu poistaa ehdokasta.");
 		}else {
-			pw.println("Candidate succesfully deleted!");
-			pw.println("<p><a href='index.html'>Return to the admin page</a>");
+			pw.println("Ehdokkaan poistaminen onnistui!");
+			pw.println("<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle.</a>");
 		}
 		pw.close();
 		try {
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Not able to close database connection.");
+			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
 			e.printStackTrace();
 		}
 	}

@@ -40,7 +40,7 @@
 		
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<tr><td>${counter}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Are you sure?')">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Muokkaa</a> </td></tr>
+				<tr><td>${counter}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Muokkaa</a> </td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		
