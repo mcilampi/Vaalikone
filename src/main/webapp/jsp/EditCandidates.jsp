@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit or delete candidates</title>
+<title>Muokkaa tai poista ehdokkaita</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
 </head>
 <body class="container-fluid">
 	<div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Edit candidates</h2>
+		<h2 class="card-header text-center text-light bg-primary">Muokkaa ehdokkaita</h2>
 		<table>
 		
 			<c:set var="counter" value="1" scope="page"/>
