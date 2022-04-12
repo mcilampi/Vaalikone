@@ -43,6 +43,8 @@ public class editCandidates extends HttpServlet {
 			Collections.sort(ehdokkaat, new NameComparator());
 		} else if (sorter == 2) {
 			Collections.sort(ehdokkaat, new NumberComparator());
+		} else if (sorter == 3) {
+			Collections.sort(ehdokkaat, new PartyComparator());
 		}
 
 		request.setAttribute("ehdokasLista", ehdokkaat);

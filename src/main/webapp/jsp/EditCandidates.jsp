@@ -26,7 +26,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 #div1 {
-	width: 500px;
+	width: 600px;
 	height: 510px;
 	margin: auto;
 	margin-top: 100px;
@@ -37,10 +37,10 @@
 	<div class="card" id="div1">
 		<h2 class="card-header text-center text-light bg-primary">Muokkaa ehdokkaita</h2>
 		<table>
-			<tr><td><a href="/editCandidates?sorter=2">Numero</a></td><td><a href="/editCandidates?sorter=1">Nimi</a></td><td></td><td></td></tr>
+			<tr><td><a href="/editCandidates?sorter=2">Numero</a></td><td><a href="/editCandidates?sorter=1">Nimi</a></td><td><a href="/editCandidates?sorter=3">Puolue</a></td><td></td></tr>
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td>${ehdokas.getEtunimi()} ${ehdokas.getSukunimi()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Muokkaa</a> </td></tr>
+				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td> ${ehdokas.getSukunimi()} ${ehdokas.getEtunimi()}</td> <td>${ehdokas.getPuolue()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Muokkaa</a> </td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		
