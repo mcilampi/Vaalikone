@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import data.Ehdokas;
+import data.Kysymys;
 
 public class Dao {
 	
@@ -13,6 +14,41 @@ public class Dao {
 	static String password = "kukkuu123";
 	static String query = "select * from ehdokkaat";
 
+	
+	// read questions from database
+	public static ArrayList<Kysymys> readAllQuestionsFromDatabase(Connection con) {
+		ArrayList<Kysymys> kysymykset = new ArrayList<Kysymys>();
+		try {
+			PreparedStatement prepared = con.prepareStatement("select * from kysymykset");
+			ResultSet result = prepared.executeQuery();
+			while (result.next()) {
+				Kysymys kysymys = new Kysymys();
+				kysymys.setId(result.getInt("kysymysID"));
+				kysymys.setKysymys(result.getString("kysymys"));
+				kysymykset.add(kysymys);
+			}
+		} catch (SQLException e) {
+			System.out.println("Kysymysten haku ei onnistunut.");
+			e.printStackTrace();
+		}
+		
+		return kysymykset;
+	}
+	
+	// insert question into database
+	public static int createQuestion(Connection con, Kysymys kysymys) {
+		int rowsAffected = 0;
+		try {
+			PreparedStatement prepared = con.prepareStatement("INSERT INTO kysymykset(kysymys) VALUES(?)");
+			prepared.setString(1, kysymys.getKysymys());
+			rowsAffected = prepared.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("EI voitu lisätä kysymystä.");
+			e.printStackTrace();
+		}
+		return rowsAffected;
+	}
+	
 	// insert candidate into database
 	public static int createCandidate(Connection con, Ehdokas ehdokas) {
 		int rowsAffected = 0;
@@ -66,7 +102,6 @@ public class Dao {
 		ArrayList<Ehdokas> ehdokasLista = new ArrayList<Ehdokas>();
 		
 		try {
-			System.out.println(con);
 			PreparedStatement prepared = con.prepareStatement(query);
 			ResultSet result = prepared.executeQuery();
 			while(result.next()) {
