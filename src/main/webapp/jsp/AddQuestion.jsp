@@ -28,7 +28,20 @@
 		document.querySelector('input[name="tunniste"]').value = valueToBeInserted	;
 	}
 	</script>
-
+<script>
+function validateForm() {
+	var userName = document.getElementById("kysymys").value;
+	var tunniste = document.getElementById("tunniste").value;
+	if (userName == "") {
+		alert("Kysymys ei voi olla tyhjä!");
+		return false;
+	}
+	if (tunniste == "") {
+		alert("Tunniste ei voi olla tyhjä! Valitse joku vaihtoehdoista tai kirjoita omasi.")
+		return false;
+	}
+}
+</script>
 
 
 <style>
@@ -43,7 +56,7 @@
 <body class="container-fluid">
 	<div class="card" id="div1">
 		<h2 class="card-header text-center text-light bg-primary">Lisää kysymys tietokantaan</h2>
-		<form class="form" action="addQuestion" method="POST">
+		<form class="form" action="addQuestion" method="POST" onSubmit="return validateForm()">
 			<table class="table table-hover table-striped">
 				<tr>
 					<td>Kysymys:</td>

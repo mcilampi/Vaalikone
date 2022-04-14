@@ -45,7 +45,15 @@ public class editQuestions extends HttpServlet {
 		} else {
 			kysymykset = Dao.readAllQuestionsWithTagFromDatabase(con,tag);
 		}
+		ArrayList<String> tunnisteet = Dao.readDistinctTags(con);
+		for (int i = 0; i < tunnisteet.size(); i++) {
+			System.out.println(tunnisteet.get(i));
+			if ((tunnisteet.get(i) == null) || (tunnisteet.get(i).equals(""))) {
+				tunnisteet.remove(i);
+			}
+		}
 		request.setAttribute("kysymykset", kysymykset);
+		request.setAttribute("tunnisteet", tunnisteet);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditQuestions.jsp");
 		dispatcher.forward(request, response);
 		Dao.closeDatabaseConnection(con);
