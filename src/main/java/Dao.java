@@ -14,6 +14,32 @@ public class Dao {
 	static String password = "kukkuu123";
 	static String query = "select * from ehdokkaat";
 
+	// close database connection
+	public static void closeDatabaseConnection(Connection con) {
+		try {
+			con.close();
+			System.out.println("Database connection closed.");
+		} catch (SQLException e) {
+			System.out.println("Not able to close database connection.");
+			e.printStackTrace();
+		}
+	}
+	
+	// get distinct tags from database table kysymykset
+	public static ArrayList<String> readDistinctTags(Connection con) {
+		ArrayList<String> tags = new ArrayList<String>();
+		try {
+			PreparedStatement prepared = con.prepareStatement("select distinct tag , case when tag is null then 'none' else tag end from kysymykset");
+			ResultSet result = prepared.executeQuery();
+			while (result.next()) {
+				tags.add(result.getString("tag"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tags;
+	}
 	
 	// read questions from database
 	public static ArrayList<Kysymys> readAllQuestionsWithTagFromDatabase(Connection con, String tag) {

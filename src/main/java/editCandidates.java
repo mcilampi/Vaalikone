@@ -52,12 +52,7 @@ public class editCandidates extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditCandidates.jsp");
 		dispatcher.forward(request, response);
-		try {
-			con.close();
-		} catch (SQLException e) {
-			System.out.println("Tietokantayhteyden muodostaminen ei onnistunut.");
-			e.printStackTrace();
-		}
+		Dao.closeDatabaseConnection(con);
 			
 	}
 

@@ -46,12 +46,7 @@ public class RegisterServlet extends HttpServlet{
 		
 		//close the stream
 		pw.close();
-		try {
-			con.close();
-		} catch (SQLException e) {
-			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
-			e.printStackTrace();
-		}
+		Dao.closeDatabaseConnection(con);
 	}
 
 }

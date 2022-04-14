@@ -52,12 +52,7 @@ public class Update extends HttpServlet {
 			pw.println("<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle.</a>");
 		}
 		pw.close();
-		try {
-			con.close();
-		} catch (SQLException e) {
-			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
-			e.printStackTrace();
-		}
+		Dao.closeDatabaseConnection(con);
 	}
 
 }

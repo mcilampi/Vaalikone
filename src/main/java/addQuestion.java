@@ -35,7 +35,7 @@ public class addQuestion extends HttpServlet {
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		Kysymys kysymys = new Kysymys();
 		kysymys.setKysymys(request.getParameter("kysymys"));
-		kysymys.setTunniste(request.getParameter("tag"));
+		kysymys.setTunniste(request.getParameter("tunniste"));
 		int rowsAffected = Dao.createQuestion(con, kysymys);
 		if (rowsAffected == 0) {
 			pw.print("Kysymyksen lisääminen tietokantaan ei onnistunut.");
@@ -46,12 +46,7 @@ public class addQuestion extends HttpServlet {
 		}
 		
 		pw.close();
-		try {
-			con.close();
-		} catch (SQLException e) {
-			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
-			e.printStackTrace();
-		}
+		Dao.closeDatabaseConnection(con);
 
 	}
 

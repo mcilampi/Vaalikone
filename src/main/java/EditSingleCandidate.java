@@ -38,12 +38,7 @@ public class EditSingleCandidate extends HttpServlet {
 		request.setAttribute("ehdokas", ehdokas);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditSingleCandidate.jsp");
 		dispatcher.forward(request, response);
-		try {
-			con.close();
-		} catch (SQLException e) {
-			System.out.println("Tietokantayhteyden sulkeminen ei onnistunut.");
-			e.printStackTrace();
-		}
+		Dao.closeDatabaseConnection(con);
 	}
 
 }
