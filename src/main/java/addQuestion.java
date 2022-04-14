@@ -35,13 +35,14 @@ public class addQuestion extends HttpServlet {
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		Kysymys kysymys = new Kysymys();
 		kysymys.setKysymys(request.getParameter("kysymys"));
+		kysymys.setTunniste(request.getParameter("tag"));
 		int rowsAffected = Dao.createQuestion(con, kysymys);
 		if (rowsAffected == 0) {
 			pw.print("Kysymyksen lisääminen tietokantaan ei onnistunut.");
 			pw.print("<a href='/editQuestions'>Palaa tarkastelemaan kysymyksiä.</a>");
 		} else {
 			pw.print("Kysymyksen lisääminen tietokantaan onnistui!");
-			pw.print("<a href='/editQuestions'>Palaa tarkastelemaan kysymyksiä.</a>");
+			pw.print("<a href='/editQuestions?tag=all'>Palaa tarkastelemaan kysymyksiä.</a>");
 		}
 		
 		pw.close();

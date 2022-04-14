@@ -3,6 +3,7 @@ package data;
 public class Kysymys {
 	
 	String kysymys;
+	String tunniste;
 	int id;
 	
 	public int getId() {
@@ -25,6 +26,13 @@ public class Kysymys {
 		this.kysymys = kysymys;
 	}
 	
-	
+	public String getTunniste() {
+		return tunniste;
+	}
+
+	public void setTunniste(String tunniste) {
+		this.tunniste = tunniste;
+	}
+
 
 }

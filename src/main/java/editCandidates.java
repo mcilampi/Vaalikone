@@ -2,6 +2,7 @@
 import data.Ehdokas;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -51,7 +52,12 @@ public class editCandidates extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditCandidates.jsp");
 		dispatcher.forward(request, response);
-		
+		try {
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("Tietokantayhteyden muodostaminen ei onnistunut.");
+			e.printStackTrace();
+		}
 			
 	}
 

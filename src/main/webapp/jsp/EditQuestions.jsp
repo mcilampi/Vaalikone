@@ -26,8 +26,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 #div1 {
-	width: 600px;
-	height: 510px;
+	width: 700px;
+	
 	margin: auto;
 	margin-top: 100px;
 }
@@ -37,10 +37,10 @@
 	<div class="card" id="div1">
 		<h2 class="card-header text-center text-light bg-primary">Muokkaa kysymyksiä</h2>
 		<table>
-			<tr><td><a href="/editQuestions">Numero</a></td><td><a href="/editQuestions">Kysymys</a></td><td></td><td></td></tr>
+			<tr><td>Numero</td><td>Kysymys</td><td>Tunniste <a href="/editQuestions?tag=all">(näytä kaikki)</a></td><td></td><td></td></tr>
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="kysymys" items="${requestScope.kysymykset}">
-				<tr><td>${kysymys.getId()}.</td><td> ${kysymys.getKysymys()}</td>  <td><a href='/delete?id=${kysymys.getId()}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')">Poista</a></td><td> <a href='/edit?id=${kysymys.getId()}'>Muokkaa</a> </td></tr>
+				<tr><td>${kysymys.getId()}.</td><td> <div style="word-wrap: break-word;">${kysymys.getKysymys()}</div></td><td><a href="/editQuestions?tag=${kysymys.getTunniste() }">${kysymys.getTunniste() }</a></td>  <td><a href='/delete?id=${kysymys.getId()}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')">Poista</a></td><td> <a href='/edit?id=${kysymys.getId()}'>Muokkaa</a> </td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		

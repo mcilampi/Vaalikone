@@ -2,7 +2,12 @@
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import data.Kysymys;
 
 import javax.servlet.RequestDispatcher;
@@ -32,11 +37,23 @@ public class editQuestions extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
-		ArrayList<Kysymys> kysymykset = Dao.readAllQuestionsFromDatabase(con);
-		
+		String tag = request.getParameter("tag").toString();
+		System.out.println("Tag is " + tag);
+		List<Kysymys> kysymykset = new ArrayList<Kysymys>();
+		if (tag.equalsIgnoreCase("all")) {
+			kysymykset = Dao.readAllQuestionsFromDatabase(con);
+		} else {
+			kysymykset = Dao.readAllQuestionsWithTagFromDatabase(con,tag);
+		}
 		request.setAttribute("kysymykset", kysymykset);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditQuestions.jsp");
 		dispatcher.forward(request, response);
+		try {
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("Tietokantayhteyden sulkeminen epäonnistui.");
+			e.printStackTrace();
+		}
 	}
 
 }

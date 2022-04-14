@@ -16,6 +16,28 @@ public class Dao {
 
 	
 	// read questions from database
+	public static ArrayList<Kysymys> readAllQuestionsWithTagFromDatabase(Connection con, String tag) {
+		ArrayList<Kysymys> kysymykset = new ArrayList<Kysymys>();
+		try {
+			PreparedStatement prepared = con.prepareStatement("select * from kysymykset where tag like(?)");
+			prepared.setString(1, tag);
+			ResultSet result = prepared.executeQuery();
+			while (result.next()) {
+				Kysymys kysymys = new Kysymys();
+				kysymys.setId(result.getInt("kysymysID"));
+				kysymys.setKysymys(result.getString("kysymys"));
+				kysymys.setTunniste(result.getString("tag"));
+				kysymykset.add(kysymys);
+			}
+		} catch (SQLException e) {
+			System.out.println("Kysymysten haku ei onnistunut.");
+			e.printStackTrace();
+		}
+		
+		return kysymykset;
+	}
+	
+	// read questions from database
 	public static ArrayList<Kysymys> readAllQuestionsFromDatabase(Connection con) {
 		ArrayList<Kysymys> kysymykset = new ArrayList<Kysymys>();
 		try {
@@ -25,6 +47,7 @@ public class Dao {
 				Kysymys kysymys = new Kysymys();
 				kysymys.setId(result.getInt("kysymysID"));
 				kysymys.setKysymys(result.getString("kysymys"));
+				kysymys.setTunniste(result.getString("tag"));
 				kysymykset.add(kysymys);
 			}
 		} catch (SQLException e) {
@@ -39,8 +62,9 @@ public class Dao {
 	public static int createQuestion(Connection con, Kysymys kysymys) {
 		int rowsAffected = 0;
 		try {
-			PreparedStatement prepared = con.prepareStatement("INSERT INTO kysymykset(kysymys) VALUES(?)");
+			PreparedStatement prepared = con.prepareStatement("INSERT INTO kysymykset(kysymys,tag) VALUES(?,?)");
 			prepared.setString(1, kysymys.getKysymys());
+			prepared.setString(2, kysymys.getTunniste());
 			rowsAffected = prepared.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("EI voitu lisätä kysymystä.");
