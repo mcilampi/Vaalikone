@@ -49,7 +49,7 @@ public class Update extends HttpServlet {
 			pw.println("Ehdokkaan tietojen päivitys ei onnistunut.");
 		}else {
 			pw.println("Ehdokkaan tietojen päivitys onnistui!");
-			pw.println("<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle.</a>");
+			pw.println("<p><a href='/editCandidates?sorter=2'>Palaa ehdokkaiden ylläpitosivulle.</a>");
 		}
 		pw.close();
 		Dao.closeDatabaseConnection(con);

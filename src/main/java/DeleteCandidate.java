@@ -40,7 +40,7 @@ public class DeleteCandidate extends HttpServlet {
 			pw.println("Ei voitu poistaa ehdokasta.");
 		}else {
 			pw.println("Ehdokkaan poistaminen onnistui!");
-			pw.println("<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle.</a>");
+			pw.println("<p><a href='/editCandidates?sorter=2'>Palaa ehdokkaiden ylläpitosivulle.</a>");
 		}
 		pw.close();
 		Dao.closeDatabaseConnection(con);
