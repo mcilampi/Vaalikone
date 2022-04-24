@@ -13,7 +13,8 @@ public class Dao {
 	static String username = "hannu";
 	static String password = "kukkuu123";
 	static String query = "select * from ehdokkaat";
-
+	static String queryy = "select * from kysymykset";
+	
 	// close database connection
 	public static void closeDatabaseConnection(Connection con) {
 		try {
@@ -84,6 +85,24 @@ public class Dao {
 		return kysymykset;
 	}
 	
+	 // returns only one question object that has it's attributes read from the database columns
+    public static Kysymys readOneKysymysFromDatabase(Connection con, String queryy, int annettuKysymys) {
+    	Kysymys kysymys = new Kysymys();
+    	try {
+			PreparedStatement prepared = con.prepareStatement(queryy);
+			ResultSet result = prepared.executeQuery();
+			while(result.next()) {
+				if (result.getInt("kysymysID") == annettuKysymys) {
+					kysymys.setId(result.getInt("kysymysID"));
+					kysymys.setKysymys(result.getString("kysymys"));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return kysymys;
+	}
+	
 	// insert question into database
 	public static int createQuestion(Connection con, Kysymys kysymys) {
 		int rowsAffected = 0;
@@ -132,6 +151,21 @@ public class Dao {
 		}
 		return rowsAffected;
 	}
+	
+	// delete question from database
+			public static int deleteQuestion(Connection con, int questionId) {
+				int rowsAffected = 0;
+				try {
+					PreparedStatement prepared = con.prepareStatement("DELETE FROM kysymykset WHERE kysymysID = ?");
+					prepared.setInt(1, questionId);
+					rowsAffected = prepared.executeUpdate();
+				} catch (SQLException e) {
+					System.out.println("Kysymyksen poistaminen ei onnistunut.");
+					e.printStackTrace();
+				}
+				return rowsAffected;
+			}
+		
 	
 	// create connection to database;
 
@@ -215,4 +249,19 @@ public class Dao {
 		return rowsAffected;
 	}
 
+	// method receives an kysymys object and updates database entry corresponding to the id attribute of the object
+    // with the given attributes
+	public static int updateEntryQuestion(Connection con, Kysymys kysymys) {
+		int rowsAffected = 0;
+		try {
+			PreparedStatement prepared = con.prepareStatement("UPDATE kysymykset SET kysymys = ? WHERE kysymysID = ?");
+			prepared.setString(1, kysymys.getKysymys());
+			prepared.setInt(2, kysymys.getId());
+			rowsAffected = prepared.executeUpdate();
+		} catch (SQLException e) {	
+			e.printStackTrace();
+		}		
+		return rowsAffected;
+	}
+	
 }

@@ -18,7 +18,7 @@
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/usr/lib/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/jetty94/jetty-home/lib/servlet-api-3.1.jar"/>
-	<classpathentry kind="lib" path="/home/hannu/Lataukset/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juhop/Desktop/jar files/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/juhop/Desktop/jar files/mysql-connector-java-8.0.28.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -51,7 +51,7 @@
 			</td><td></td><td></td></tr>
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="kysymys" items="${requestScope.kysymykset}">
-				<tr><td>${kysymys.getId()}.</td><td> <div style="word-wrap: break-word;">${kysymys.getKysymys()}</div></td><td><a href="/editQuestions?tag=${kysymys.getTunniste() }">${kysymys.getTunniste() }</a></td>  <td><a href='/delete?id=${kysymys.getId()}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')">Poista</a></td><td> <a href='/edit?id=${kysymys.getId()}'>Muokkaa</a> </td></tr>
+				<tr><td>${kysymys.getId()}.</td><td> <div style="word-wrap: break-word;">${kysymys.getKysymys()}</div></td><td><a href="/editQuestions?tag=${kysymys.getTunniste() }">${kysymys.getTunniste() }</a></td>  <td><a href='/deleteQ?id=${kysymys.getId()}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')">Poista</a></td><td> <a href='/editQuestion?id=${kysymys.getId()}'>Muokkaa</a> </td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		
