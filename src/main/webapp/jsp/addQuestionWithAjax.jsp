@@ -82,7 +82,7 @@ function addQuestion(form) {
 		<tr>
 		<td colspan="2"><input type='button' name='ok' value='OK' onclick='addQuestion(this.form);'></td>
 		</tr>
-		<tr><td colspan="2" id="result">Tähän tulee ilmoitus, jos onnistui!</td>
+		<tr><td colspan="2" id="result">Tähän tulee ilmoitus, jos tietokantaan lisääminen onnistui!</td>
 		</tr>
 	</table>
 </form>
