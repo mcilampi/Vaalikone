@@ -4,6 +4,7 @@ import data.Kysymys;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,10 +33,17 @@ public class EditSingleQuestion extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
-			
+		ArrayList<String> tunnisteet = Dao.readDistinctTags(con);
+		for (int i = 0; i < tunnisteet.size(); i++) {
+			System.out.println(tunnisteet.get(i));
+			if ((tunnisteet.get(i) == null) || (tunnisteet.get(i).equals(""))) {
+				tunnisteet.remove(i);
+			}
+		}
 		int kysymysId = Integer.parseInt(request.getParameter("id"));
 		Kysymys kysymys = Dao.readOneKysymysFromDatabase(con, Dao.queryy, kysymysId);
 		request.setAttribute("kysymys", kysymys);
+		request.setAttribute("tunnisteet", tunnisteet);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/EditSingleQuestion.jsp");
 		dispatcher.forward(request, response);
 		Dao.closeDatabaseConnection(con);

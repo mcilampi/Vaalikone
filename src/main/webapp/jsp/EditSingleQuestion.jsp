@@ -23,6 +23,25 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function insertValue(valueToBeInserted) {
+	document.querySelector('input[name="tunniste"]').value = valueToBeInserted	;
+}
+</script>
+<script>
+function validateForm() {
+	var userName = document.getElementById("kysymys").value;
+	var tunniste = document.getElementById("tunniste").value;
+	if (userName == "") {
+		alert("Kysymys ei voi olla tyhjä!");
+		return false;
+	}
+	if (tunniste == "") {
+		alert("Tunniste ei voi olla tyhjä! Valitse joku vaihtoehdoista tai kirjoita omasi.")
+		return false;
+	}
+}
+</script>
 <style>
 #div1 {
 	width: 500px;
@@ -39,7 +58,7 @@ esittely{
 </head>
 <body>
 <div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Muokkaa ehdokkaan tietoja</h2>
+		<h2 class="card-header text-center text-light bg-primary">Muokkaa kysymyksen tietoja</h2>
 		<form action="UpdateQuestion" method="post">
 		<table>
 				<tr>
@@ -58,6 +77,18 @@ esittely{
 			<td><textarea id="kysymys" name="kysymys" rows="15" cols="35">${requestScope.kysymys.getKysymys()}</textarea><br>
 			</td>
 		</tr>
+				 <tr>
+		 	<td>
+			Tunniste: (kirjoita uusi tai valitse napilla)
+			</td>
+			<td><input type="text" id="tunniste" name="tunniste" value="${requestScope.kysymys.getTunniste()}"><br>
+					<c:forEach var="tag" items="${requestScope.tunnisteet }">
+						<button type="button" value="${tag }" onClick="insertValue(this.value)" >${tag }</button>
+					</c:forEach>
+			</td>
+		</tr>
+		<tr>
+		
 		
 		</table>
 
