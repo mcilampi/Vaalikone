@@ -13,7 +13,7 @@ public class Dao {
 	static String username = "hannu";
 	static String password = "kukkuu123";
 	static String query = "select * from ehdokkaat";
-	static String queryy = "select * from kysymykset";
+	static String queryy = "select * from KYSYMYS";
 	
 	// close database connection
 	public static void closeDatabaseConnection(Connection con) {
@@ -30,10 +30,10 @@ public class Dao {
 	public static ArrayList<String> readDistinctTags(Connection con) {
 		ArrayList<String> tags = new ArrayList<String>();
 		try {
-			PreparedStatement prepared = con.prepareStatement("select distinct tag , case when tag is null then 'none' else tag end from kysymykset");
+			PreparedStatement prepared = con.prepareStatement("select distinct TUNNISTE , case when TUNNISTE is null then 'none' else TUNNISTE end from KYSYMYS");
 			ResultSet result = prepared.executeQuery();
 			while (result.next()) {
-				tags.add(result.getString("tag"));
+				tags.add(result.getString("TUNNISTE"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -46,14 +46,14 @@ public class Dao {
 	public static ArrayList<Kysymys> readAllQuestionsWithTagFromDatabase(Connection con, String tag) {
 		ArrayList<Kysymys> kysymykset = new ArrayList<Kysymys>();
 		try {
-			PreparedStatement prepared = con.prepareStatement("select * from kysymykset where tag like(?)");
+			PreparedStatement prepared = con.prepareStatement("select * from KYSYMYS where TUNNISTE like(?)");
 			prepared.setString(1, tag);
 			ResultSet result = prepared.executeQuery();
 			while (result.next()) {
 				Kysymys kysymys = new Kysymys();
 				kysymys.setId(result.getInt("kysymysID"));
 				kysymys.setKysymys(result.getString("kysymys"));
-				kysymys.setTunniste(result.getString("tag"));
+				kysymys.setTunniste(result.getString("TUNNISTE"));
 				kysymykset.add(kysymys);
 			}
 		} catch (SQLException e) {
@@ -68,13 +68,13 @@ public class Dao {
 	public static ArrayList<Kysymys> readAllQuestionsFromDatabase(Connection con) {
 		ArrayList<Kysymys> kysymykset = new ArrayList<Kysymys>();
 		try {
-			PreparedStatement prepared = con.prepareStatement("select * from kysymykset");
+			PreparedStatement prepared = con.prepareStatement("select * from KYSYMYS");
 			ResultSet result = prepared.executeQuery();
 			while (result.next()) {
 				Kysymys kysymys = new Kysymys();
 				kysymys.setId(result.getInt("kysymysID"));
 				kysymys.setKysymys(result.getString("kysymys"));
-				kysymys.setTunniste(result.getString("tag"));
+				kysymys.setTunniste(result.getString("TUNNISTE"));
 				kysymykset.add(kysymys);
 			}
 		} catch (SQLException e) {
@@ -95,6 +95,7 @@ public class Dao {
 				if (result.getInt("kysymysID") == annettuKysymys) {
 					kysymys.setId(result.getInt("kysymysID"));
 					kysymys.setKysymys(result.getString("kysymys"));
+					kysymys.setTunniste(result.getString("TUNNISTE"));
 				}
 			}
 		} catch (SQLException e) {
@@ -107,7 +108,7 @@ public class Dao {
 	public static int createQuestion(Connection con, Kysymys kysymys) {
 		int rowsAffected = 0;
 		try {
-			PreparedStatement prepared = con.prepareStatement("INSERT INTO kysymykset(kysymys,tag) VALUES(?,?)");
+			PreparedStatement prepared = con.prepareStatement("INSERT INTO KYSYMYS(kysymys,TUNNISTE) VALUES(?,?)");
 			prepared.setString(1, kysymys.getKysymys());
 			prepared.setString(2, kysymys.getTunniste());
 			rowsAffected = prepared.executeUpdate();
@@ -156,7 +157,7 @@ public class Dao {
 			public static int deleteQuestion(Connection con, int questionId) {
 				int rowsAffected = 0;
 				try {
-					PreparedStatement prepared = con.prepareStatement("DELETE FROM kysymykset WHERE kysymysID = ?");
+					PreparedStatement prepared = con.prepareStatement("DELETE FROM KYSYMYS WHERE kysymysID = ?");
 					prepared.setInt(1, questionId);
 					rowsAffected = prepared.executeUpdate();
 				} catch (SQLException e) {
@@ -254,9 +255,11 @@ public class Dao {
 	public static int updateEntryQuestion(Connection con, Kysymys kysymys) {
 		int rowsAffected = 0;
 		try {
-			PreparedStatement prepared = con.prepareStatement("UPDATE kysymykset SET kysymys = ? WHERE kysymysID = ?");
+			PreparedStatement prepared = con.prepareStatement("UPDATE KYSYMYS SET kysymys = ?, TUNNISTE = ?  WHERE kysymysID = ?");
 			prepared.setString(1, kysymys.getKysymys());
-			prepared.setInt(2, kysymys.getId());
+			prepared.setString(2, kysymys.getTunniste());
+			prepared.setInt(3, kysymys.getId());
+			
 			rowsAffected = prepared.executeUpdate();
 		} catch (SQLException e) {	
 			e.printStackTrace();
