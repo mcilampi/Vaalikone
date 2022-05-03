@@ -15,7 +15,10 @@ public class Dao {
 	static String query = "select * from ehdokkaat";
 	static String queryy = "select * from KYSYMYS";
 	
-	// close database connection
+	/**
+	 * Close the database connection.
+	 * @param con
+	 */
 	public static void closeDatabaseConnection(Connection con) {
 		try {
 			con.close();
@@ -26,7 +29,11 @@ public class Dao {
 		}
 	}
 	
-	// get distinct tags from database table kysymykset
+	/**
+	 * Read distinct tags from the database table and return them as an ArrayList.
+	 * @param con
+	 * @return
+	 */
 	public static ArrayList<String> readDistinctTags(Connection con) {
 		ArrayList<String> tags = new ArrayList<String>();
 		try {
@@ -42,7 +49,12 @@ public class Dao {
 		return tags;
 	}
 	
-	// read questions from database
+	/**
+	 * Get all questions with the ceartain tag from database.
+	 * @param con
+	 * @param tag
+	 * @return
+	 */
 	public static ArrayList<Kysymys> readAllQuestionsWithTagFromDatabase(Connection con, String tag) {
 		ArrayList<Kysymys> kysymykset = new ArrayList<Kysymys>();
 		try {
@@ -64,7 +76,11 @@ public class Dao {
 		return kysymykset;
 	}
 	
-	// read questions from database
+	/**
+	 * Read all questions from database.
+	 * @param con
+	 * @return
+	 */
 	public static ArrayList<Kysymys> readAllQuestionsFromDatabase(Connection con) {
 		ArrayList<Kysymys> kysymykset = new ArrayList<Kysymys>();
 		try {
@@ -85,7 +101,13 @@ public class Dao {
 		return kysymykset;
 	}
 	
-	 // returns only one question object that has it's attributes read from the database columns
+	 /**
+	  * Returns only one question object that has it's attributes read from the database columns.
+	  * @param con
+	  * @param queryy
+	  * @param annettuKysymys
+	  * @return
+	  */
     public static Kysymys readOneKysymysFromDatabase(Connection con, String queryy, int annettuKysymys) {
     	Kysymys kysymys = new Kysymys();
     	try {
@@ -104,7 +126,12 @@ public class Dao {
     	return kysymys;
 	}
 	
-	// insert question into database
+	/**
+	 * Insert question into database
+	 * @param con
+	 * @param kysymys
+	 * @return
+	 */
 	public static int createQuestion(Connection con, Kysymys kysymys) {
 		int rowsAffected = 0;
 		try {
@@ -119,7 +146,12 @@ public class Dao {
 		return rowsAffected;
 	}
 	
-	// insert candidate into database
+	/**
+	 * Insert candidate into database
+	 * @param con
+	 * @param ehdokas
+	 * @return
+	 */
 	public static int createCandidate(Connection con, Ehdokas ehdokas) {
 		int rowsAffected = 0;
 		try {
@@ -139,7 +171,12 @@ public class Dao {
 		return rowsAffected;
 	}
 	
-	// delete candidate from database
+	/**
+	 * Delete candidate from database
+	 * @param con
+	 * @param candidateId
+	 * @return
+	 */
 	public static int deleteCandidate(Connection con, int candidateId) {
 		int rowsAffected = 0;
 		try {
@@ -153,7 +190,12 @@ public class Dao {
 		return rowsAffected;
 	}
 	
-	// delete question from database
+	/**
+	 * Delete question from database
+	 * @param con
+	 * @param questionId
+	 * @return
+	 */
 			public static int deleteQuestion(Connection con, int questionId) {
 				int rowsAffected = 0;
 				try {
@@ -168,7 +210,13 @@ public class Dao {
 			}
 		
 	
-	// create connection to database;
+	/**
+	 * Create connection to database
+	 * @param DBpath
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 
 	public static Connection createDatabaseConnection(String DBpath, String username, String password) {
 		Connection con = null;
@@ -181,8 +229,14 @@ public class Dao {
 		return con;
 	}
     
-	// read all ehdokas info from database, create ehdokas object and set it's properties according to database values
-	// return a list of the created ehdokas objects
+	/**
+	 *  Read all ehdokas info from database, create ehdokas object and set it's properties according to database values
+	 *  return a list of the created ehdokas objects
+	 * @param con
+	 * @param query
+	 * @return
+	 */
+
     public static ArrayList<Ehdokas> readFromDatabase(Connection con, String query) {
 		ArrayList<Ehdokas> ehdokasLista = new ArrayList<Ehdokas>();
 		
@@ -207,7 +261,13 @@ public class Dao {
     	return ehdokasLista;
 	}
     
-    // returns only one ehdokas object that has it's attributes read from the database columns
+    /**
+     * Returns only one ehdokas object that has it's attributes read from the database columns
+     * @param con
+     * @param query
+     * @param annettuEhdokas
+     * @return
+     */
     public static Ehdokas readOneEhdokasFromDatabase(Connection con, String query, int annettuEhdokas) {
     	Ehdokas ehdokas = new Ehdokas();
     	try {
@@ -231,8 +291,14 @@ public class Dao {
     	return ehdokas;
 	}
     
-    // method receives an ehdokas object and updates database entry corresponding to the id attribute of the object
-    // with the given attributes
+    /**
+     * Method receives an ehdokas object and updates database entry corresponding to the id attribute of the object
+     * with the given attributes
+     * @param con
+     * @param ehdokas
+     * @return
+     */
+    
 	public static int updateEntry(Connection con, Ehdokas ehdokas) {
 		int rowsAffected = 0;
 		try {
@@ -250,8 +316,13 @@ public class Dao {
 		return rowsAffected;
 	}
 
-	// method receives an kysymys object and updates database entry corresponding to the id attribute of the object
-    // with the given attributes
+	/**
+	 * Method receives an kysymys object and updates database entry corresponding to the id attribute of the object
+	 * with the given attributes
+	 * @param con
+	 * @param kysymys
+	 * @return
+	 */
 	public static int updateEntryQuestion(Connection con, Kysymys kysymys) {
 		int rowsAffected = 0;
 		try {
