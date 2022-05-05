@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import data.Ehdokas;
 
 /**
- * Servlet implementation class Update
+ * Receives candidate data from JSP form and relays it to DAO, which then stores the data to database.
  */
 @WebServlet("/Update")
 public class Update extends HttpServlet {

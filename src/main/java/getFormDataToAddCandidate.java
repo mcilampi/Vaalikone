@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import data.Ehdokas;
 
 /**
- * Servlet implementation class getFormDataToAddCandidate
+ * Retrieves distinct party data and all candidate numbers from DAO
+ * Relays the data to JSP
  */
 @WebServlet("/getFormDataToAddCandidate")
 public class getFormDataToAddCandidate extends HttpServlet {

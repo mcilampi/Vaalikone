@@ -1,6 +1,10 @@
 package data;
 import java.util.Comparator;
-
+/**
+ * Class to instatiate Ehdokas objects.
+ * @author hannu
+ *
+ */
 public class Ehdokas {
 	
 	int id;

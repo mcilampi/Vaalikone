@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import data.Ehdokas;
 
 /**
- * Servlet implementation class addCandidate
+ * Receives candidate data and stores it in database.
  */
 @WebServlet("/addCandidate")
 public class addCandidate extends HttpServlet {

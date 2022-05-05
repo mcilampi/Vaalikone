@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EditSingleCandidate
+ * Receives question id and relays it to Dao class's method to delete the candidate from database.
  */
 @WebServlet("/deleteQ")
 public class DeleteQuestion extends HttpServlet {
@@ -37,7 +37,7 @@ public class DeleteQuestion extends HttpServlet {
 		int rowsAffected = Dao.deleteQuestion(con, kysymysId);
 		
 		if(rowsAffected == 0) {
-			pw.println("Ei voitu poistaa kysymystä.");
+			pw.println("Ei voitu poistaa kysymystï¿½.");
 		}else {
 			pw.println("Kysymyksen poistaminen onnistui!");
 			pw.println("<p><a href='index.html'>Palaa kysymysten yllÃ¤pitosivulle.</a>");

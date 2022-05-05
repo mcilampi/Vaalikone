@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EditSingleCandidate
+ * Retrieves single candidate data from DAO and relays it to JSP
  */
 @WebServlet("/edit")
 public class EditSingleCandidate extends HttpServlet {

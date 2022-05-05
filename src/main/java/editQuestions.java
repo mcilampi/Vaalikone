@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class editQuestions
+ * Receives a list of all qustions retrieved from database by DAO
+ * Based on request parameter filters the list by questions' tags
+ * Relays the list to jsp.
  */
 @WebServlet("/editQuestions")
 public class editQuestions extends HttpServlet {

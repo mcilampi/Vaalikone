@@ -18,7 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  	
 
 /**
- * Servlet implementation class editCandidates
+ * Gets a list of candidates retreived from database by DAO and relays it to jsp
+ * Orders the candidate list based on parameter received in request
  */
 @WebServlet("/editCandidates")
 public class editCandidates extends HttpServlet {

@@ -6,7 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import data.Ehdokas;
 import data.Kysymys;
-
+/**
+ * DAO class, includes all the methods that connect to database.
+ * @author hannu
+ *
+ */
 public class Dao {
 	
 	static String DBpath = "//localhost:3306/vaalikone";

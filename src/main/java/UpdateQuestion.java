@@ -12,9 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.Kysymys;
-
 /**
- * Servlet implementation class Update
+ * Receives question data from JSP form and relays it to DAO, which then stores the data tto database.
  */
 @WebServlet("/UpdateQuestion")
 public class UpdateQuestion extends HttpServlet {

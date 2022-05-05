@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class getFormDataToAddQuestion
+ * Receives all questions tags from DAO and relays them to JSP
  */
 @WebServlet("/getFormDataToAddQuestion")
 public class getFormDataToAddQuestion extends HttpServlet {

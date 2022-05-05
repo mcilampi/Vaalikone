@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import data.Ehdokas;
 /**
- * Servlet implementation class RegisterServlet
+ * Receives candidate data from JSP form and relays it to DAO, which then stores the data tto database.
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet{

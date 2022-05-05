@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EditSingleCandidate
+ * Receives candidate id and relays it to Dao class's method to delete the candidate from database.
  */
 @WebServlet("/delete")
 public class DeleteCandidate extends HttpServlet {

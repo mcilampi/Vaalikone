@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class addQuestion
+ * Receives question data and stores it to database.
  */
 @WebServlet("/addQuestion")
 public class addQuestion extends HttpServlet {

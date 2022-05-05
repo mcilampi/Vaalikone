@@ -1,6 +1,10 @@
 import java.util.Comparator;
 import data.Ehdokas;
-
+/**
+ * Comparator to order candidates by party.
+ * @author hannu
+ *
+ */
 public class PartyComparator implements Comparator<Ehdokas>{
 
 	@Override

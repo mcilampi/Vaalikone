@@ -1,6 +1,10 @@
 import java.util.Comparator;
 import data.Ehdokas;
-
+/**
+ * Comparator to order candidates by candidate number.
+ * @author hannu
+ *
+ */
 public class NumberComparator implements Comparator<Ehdokas>{
 
 	@Override

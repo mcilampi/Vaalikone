@@ -1,6 +1,10 @@
 import java.util.Comparator;
 import data.Ehdokas;
-
+/**
+ * Comparator to order candidates by last name.
+ * @author hannu
+ *
+ */
 public class NameComparator implements Comparator<Ehdokas>{
 
 	@Override

@@ -6,7 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/** Class to instatiate Kysymys objects. 
+ * 
+ * Includes REST annotations because the class is also used for practicing REST.
+ * 
+ * @author hannu
+ *
+ */
 @Entity
 @Table
 public class Kysymys {

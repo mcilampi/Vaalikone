@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EditSingleCandidate
+ * Retrieves a single question and  all questions' tags from DAO
+ * Relays them to JSP
  */
 @WebServlet("/editQuestion")
 public class EditSingleQuestion extends HttpServlet {

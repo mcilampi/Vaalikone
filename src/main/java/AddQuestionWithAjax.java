@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddQuestionWithAjax
+ * Gets distinct tags from database and relays them to jsp.
  */
 @WebServlet("/AddQuestionWithAjax")
 public class AddQuestionWithAjax extends HttpServlet {
