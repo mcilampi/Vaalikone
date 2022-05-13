@@ -43,21 +43,22 @@
 	<th>ID</th>
 	<th>Kysymys</th>
 	<th>Tunniste</th>
-	<th>Muokkaa</th>
 	<th>Poista</th>
+	<th>Muokkaa</th>
 	</tr>
 	<c:forEach var="kysymys" items="${requestScope.kysymykset }">
 	<tr>
 	<td>${kysymys.getId()}</td>
 	<td>${kysymys.getKysymys() }</td>
 	<td>${kysymys.getTunniste() }</td>
-	<td></td>
-	<td></td>
+	<td><a href='/rest/questionService/deleteQuestionRestful/${kysymys.id}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')">Poista</a></td>
+	<td><a href='/rest/questionService/updateQuestionRestful/${kysymys.id}' >Muokkaa</a></td>
 	<tr>
 
 	</c:forEach>
 </table>
-<p><a href='../../index.html'>Palaa ehdokkaiden ylläpitosivulle</a></p>
+<p><a href='/index.html'>Palaa ehdokkaiden ylläpitosivulle</a></p>
 </div>
 </body>
 </html>
+
