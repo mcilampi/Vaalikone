@@ -17,19 +17,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Request;
 
 import data.Kysymys;
 
 @Path("/questionService")
 public class QuestionService {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("questionapp");
+	
 //	@POST
 //	@Path("/addQuestionRestful")
 //	@Consumes(MediaType.APPLICATION_JSON)
@@ -40,6 +44,98 @@ public class QuestionService {
 //		System.out.println(kysymys.getKysymys());
 //		return kysymys;
 //	}
+	
+	@GET
+	@Path("/readQuestions")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Kysymys> readQuestion() {
+		EntityManager em=emf.createEntityManager();
+		em.getTransaction().begin();
+		List<Kysymys> list=em.createQuery("select a from Kysymys a").getResultList();
+		em.getTransaction().commit();
+		return list;
+	}
+
+	
+//	@DELETE
+//	@Path("/deleteQuestionRestful/{id}")
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public List<Kysymys> deleteQuestionsRestful(@PathParam("id") int id) {
+//		EntityManager em=emf.createEntityManager();
+//		em.getTransaction().begin();
+//		Kysymys f=em.find(Kysymys.class, id);
+//		if (f!=null) {
+//			em.remove(f);//The actual insertion line
+//		}
+//		em.getTransaction().commit();
+//		//Calling the method readFish() of this service
+//		List<Kysymys> list=readQuestion();		
+//		return list;
+//		
+//		}
+	
+
+	
+	@GET
+	@Path("/deleteQuestionRestful/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void deleteQuestionByGet(@PathParam("id") int id, 
+			@Context HttpServletRequest request,
+			@Context HttpServletResponse response
+			) {
+		EntityManager em=emf.createEntityManager();
+		em.getTransaction().begin();
+		Kysymys f=em.find(Kysymys.class, id);
+		if (f!=null) {
+			em.remove(f);//The actual delete line
+		}
+		em.getTransaction().commit();
+		//Calling the method readFish() of this service
+		List<Kysymys> list=readQuestion();		
+		
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
+		request.setAttribute("questionlist", list);
+		try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@PUT
+	@Path("/updateQuestionRestful")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public List<Kysymys> updateQuestion(Kysymys kysymys) {
+		EntityManager em=emf.createEntityManager();
+		em.getTransaction().begin();
+		Kysymys f=em.find(Kysymys.class, kysymys.getId());
+		if (f!=null) {
+		em.merge(kysymys);
+		}
+		em.getTransaction().commit();
+		List<Kysymys> list=readQuestion();	
+		
+		return list;
+	}
+	
+//	@GET
+//	@Path("/updateQuestionRestful/{id}")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Kysymys updateQuestionRestful(@PathParam("id") int id) {
+//		EntityManager em=emf.createEntityManager();
+//		em.getTransaction().begin();
+//		Kysymys f=em.find(Kysymys.class, id);
+//		em.getTransaction().commit();
+//		return f;
+//	}
+	
 	
 	@PUT
 	@Path("/addQuestionRestful")
