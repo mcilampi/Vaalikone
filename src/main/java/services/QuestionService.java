@@ -90,10 +90,10 @@ public class QuestionService {
 		em.getTransaction().begin();
 		Kysymys f=em.find(Kysymys.class, id);
 		if (f!=null) {
-			em.remove(f);//The actual delete line
+			em.remove(f);
 		}
 		em.getTransaction().commit();
-		//Calling the method readFish() of this service
+
 		List<Kysymys> list=readQuestion();		
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
