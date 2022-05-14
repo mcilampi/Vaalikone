@@ -40,7 +40,7 @@ public class DeleteQuestion extends HttpServlet {
 			pw.println("Ei voitu poistaa kysymyst�.");
 		}else {
 			pw.println("Kysymyksen poistaminen onnistui!");
-			pw.println("<p><a href='index.html'>Palaa kysymysten ylläpitosivulle.</a>");
+			pw.println("<p><a href='/editQuestions?tag=all' class='text-decoration-none'>Palaa kysymysten ylläpitosivulle.</a>");
 		}
 		pw.close();
 		Dao.closeDatabaseConnection(con);

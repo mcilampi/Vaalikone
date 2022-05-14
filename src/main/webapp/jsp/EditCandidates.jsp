@@ -21,7 +21,7 @@
 			</thead>
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td> ${ehdokas.getSukunimi()} ${ehdokas.getEtunimi()}</td> <td>${ehdokas.getPuolue()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')"  class="btn btn-danger btn-sm">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}' class="btn btn-warning btn-sm">Muokkaa</a> </td></tr>
+				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td> ${ehdokas.getSukunimi()} ${ehdokas.getEtunimi()}</td> <td>${ehdokas.getPuolue()}</td><td> <a href='/edit?id=${ehdokas.getId()}' class="btn btn-warning btn-sm">Muokkaa</a> </td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')" class="btn btn-danger btn-sm">Poista</a></td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		
