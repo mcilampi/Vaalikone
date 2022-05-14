@@ -16,7 +16,12 @@
 	<div class="card" id="div1">
 
 		<h2 class="card-header text-center text-light" id="header1">Muokkaa kysymyksiä</h2>
-			<a href='index.html' class="text-decoration-none">Palaa ylläpitosivulle</a>
+		<table>
+			<tr></tr>
+				<td><a href='index.html'  class="text-decoration-none">Palaa ylläpitosivulle</a></td>
+				<td id="candidate-cell"><a href="/getFormDataToAddQuestion" class="text-decoration-none">Lisää kysymys</a></td>
+				</tr>
+		</table>
 		<table class="table table-hover table-striped">
 			<!--  <tr><td>Numero</td><td>Kysymys</td><td>Tunniste <a href="/editQuestions?tag=all">(näytä kaikki)</a></td><td></td><td></td></tr>-->
 			<thead>

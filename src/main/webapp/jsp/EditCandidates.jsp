@@ -15,6 +15,13 @@
 <body class="container-fluid">
 	<div class="card" id="div1">
 		<h2 class="card-header text-center text-light"  id="header1">Muokkaa ehdokkaita</h2>
+		<table>
+			<tr></tr>
+				<td><a href='index.html'  class="text-decoration-none">Palaa ylläpitosivulle</a></td>
+				<td id="candidate-cell"><a href="/getFormDataToAddCandidate" class="text-decoration-none">Rekisteröi uusi ehdokas</a></td>
+				</tr>
+		</table>
+		
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr><th scope="col"><a href="/editCandidates?sorter=2" class="text-decoration-none">Numero</a></th><th scope="col"><a href="/editCandidates?sorter=1" class="text-decoration-none">Nimi</a></th><th scope="col"><a href="/editCandidates?sorter=3" class="text-decoration-none">Puolue</a></th><th scope="col"></th><th  scope="col"></th></tr>

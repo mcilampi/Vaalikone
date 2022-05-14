@@ -46,7 +46,7 @@ public class addCandidate extends HttpServlet {
 			pw.print("<a href='index.html'>Palaa hallinnointisivulle.</a>");
 		} else {
 			pw.print("Ehdokkaan lisääminen tietokantaan onnistui!");
-			pw.print("<a href='index.html'>Palaa hallinnointisivulle.</a>");
+			pw.print("<a href='http://localhost:8080/editCandidates?sorter=2'>Palaa hallinnointisivulle.</a>");
 		}
 		
 
