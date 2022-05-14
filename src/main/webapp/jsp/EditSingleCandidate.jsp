@@ -8,59 +8,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Muokkaa ehdokkaan tietoja</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="/css/style.css" rel="stylesheet">
 
-<!-- Popper JS -->
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-#div1 {
-	width: 500px;
-	height: 600px;
-	margin: auto;
-	margin-top: 100px;
-}
-label,
-esittely{
-	display:inline-block;
-  	vertical-align:middle;
-}
-</style>
 </head>
 <body>
 <div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Muokkaa ehdokkaan tietoja</h2>
+		<h2 class="card-header text-center text-light" id="header1">Muokkaa ehdokkaan tietoja</h2>
 		<form action="Update" method="post">
-		<table>
+		<table class="table table-hover table-striped">
 				<tr>
 			<td>
 			Ehdokkaan ID 
 			</td><td>
-			 <input type ="text" name="id" value="${requestScope.ehdokas.getId()}" readonly><br>
+			 <input type ="text" name="id" value="${requestScope.ehdokas.getId()}" readonly class="form-control" aria-label="Username" aria-describedby="basic-addon1"><br>
 			 </td>
 		 </tr>
 		<tr>
 			<td>
 			Etunimi:
 			</td><td>
-			 <input type ="text" name="etunimi" value="${requestScope.ehdokas.getEtunimi()}"><br>
+			 <input type ="text" name="etunimi" value="${requestScope.ehdokas.getEtunimi()}" class="form-control" aria-label="Username" aria-describedby="basic-addon1"><br>
 			 </td>
 		 </tr>
 		 <tr>
 		 	<td>
 			Sukunimi: 
 			</td>
-			<td><input type ="text" name="sukunimi" value="${requestScope.ehdokas.getSukunimi()}"><br>
+			<td><input type ="text" name="sukunimi" value="${requestScope.ehdokas.getSukunimi()}" class="form-control" aria-label="Username" aria-describedby="basic-addon1"><br>
 			</td>
 		</tr>
 		<tr>
@@ -68,14 +44,14 @@ esittely{
 			Puolue:
 			</td>
 			<td> 
-			<input type ="text" name="puolue" value="${requestScope.ehdokas.getPuolue()}"><br>
+			<input type ="text" name="puolue" value="${requestScope.ehdokas.getPuolue()}" class="form-control" aria-label="Username" aria-describedby="basic-addon1"><br>
 			</td>
 		</tr>
 		<tr>
 			<td>
 			Esittely: 
 			</td>
-			<td><textarea id="esittely" name="esittely" rows="15" cols="35">${requestScope.ehdokas.getEsittely()}</textarea><br>
+			<td><textarea id="esittely" name="esittely"  class="form-control" rows="6">${requestScope.ehdokas.getEsittely()}</textarea><br>
 			</td>
 		</tr>
 		<tr>
@@ -83,7 +59,7 @@ esittely{
 			Ehdokasnumero: 
 			</td>
 			<td>
-			<input type ="number" name="ehdokasnumero" value="${requestScope.ehdokas.getEhdokasNumero()}"><br>
+			<input type ="number" name="ehdokasnumero" value="${requestScope.ehdokas.getEhdokasNumero()}"  class="form-control" aria-label="Username" aria-describedby="basic-addon1"><br>
 			</td>
 		</tr>
 		</table>
@@ -92,13 +68,16 @@ esittely{
 		</table>
 		<tr>
 			<td>
-			<input type='submit' name='update' value='Tallenna tiedot'>
+			<input type='submit' name='update' value='Tallenna tiedot' class="btn btn-outline-success"> 
 			</td>
+			<td>
+			<a href='index.html' class="btn btn-outline-danger">Hylkää muutokset ja palaa etusivulle</a>
 		</tr> 
 		</form>
 			
-		<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle tallentamatta muutoksia</a>
+		<p>
 		
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
