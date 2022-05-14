@@ -71,7 +71,7 @@
 			<input type='submit' name='update' value='Tallenna tiedot' class="btn btn-outline-success"> 
 			</td>
 			<td>
-			<a href='index.html' class="btn btn-outline-danger">Hylkää muutokset ja palaa etusivulle</a>
+			<a href='/editCandidates?sorter=2' class="btn btn-outline-danger">Hylkää muutokset ja palaa etusivulle</a>
 		</tr> 
 		</form>
 			
