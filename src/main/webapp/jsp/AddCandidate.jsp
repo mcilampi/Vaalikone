@@ -9,10 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Lisää ehdokas</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="/css/style.css" rel="stylesheet">
 <script>
 	function insertValue(valueToBeInserted) {
 		document.querySelector('input[name="puolue"]').value = valueToBeInserted	;
@@ -59,42 +57,24 @@ function validateForm() {
     }
 }
 </script>
-<!-- jQuery library -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 
-<!-- Popper JS -->
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-#div1 {
-	width: 500px;
-	
-	margin: auto;
-	margin-top: 100px;
-}
-</style>
 </head>
 <body class="container-fluid">
 	<div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Lisää ehdokas tietokantaan</h2>
+		<h2 class="card-header text-center text-light" id="header1">Lisää ehdokas tietokantaan</h2>
 		<form class="form" action="addCandidate" method="POST" onSubmit="return validateForm()">
 			<table class="table table-hover table-striped">
 				<tr>
 					<td>Etunimi:</td>
-					<td><input type="text" name="etunimi" id="etunimi"></td>
+					<td><input type="text" name="etunimi" id="etunimi" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 				</tr>
 				<tr>
 					<td>Sukunimi:</td>
-					<td><input type="text" name="sukunimi" id="sukunimi"></td>
+					<td><input type="text" name="sukunimi" id="sukunimi" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 				</tr>
 				<tr>
 					<td>Puolue:</td>
-					<td><input type="text" name="puolue" id="puolue">
+					<td><input type="text" name="puolue" id="puolue" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
 					<p>
 					<c:forEach var="puolue" items="${requestScope.puoluelista }">
 						<button type="button" value="${puolue }" onClick="insertValue(this.value)" >${puolue }</button>
@@ -104,19 +84,19 @@ function validateForm() {
 				</tr>
 				<tr>
 					<td>Esittely:</td>
-					<td><textarea id="esittely" name="esittely" rows="10" cols="25"></textarea></td>
+					<td><textarea id="esittely" name="esittely" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea></td>
 				</tr>
 				<tr>
 					<td>Ehdokasnumero:</td>
-					<td><input type="text" name="ehdokasnumero" id="ehdokasnumero"></td>
+					<td><input type="text" name="ehdokasnumero" id="ehdokasnumero" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 				</tr>
 				<tr>
 					<td>Käyttäjänimi:</td>
-					<td><input type="text" name="kayttajanimi" id="kayttajanimi"></td>
+					<td><input type="text" name="kayttajanimi" id="kayttajanimi" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 				</tr>
 				<tr>
 					<td>Salasana:</td>
-					<td><input type="text" name="salasana" id="salasana"></td>
+					<td><input type="password" name="salasana" id="salasana" class="form-control" aria-label="Username" aria-describedby="basic-addon1"></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="Rekisteröi ehdokas"
@@ -130,8 +110,9 @@ function validateForm() {
 				</tr>
 			
 			</table>
-			<p><a href='index.html'>Palaa ehdokkaiden ylläpitosivulle</a></p>
+			<p><a href='index.html' class="text-decoration-none">Palaa ehdokkaiden ylläpitosivulle</a></p>
 		</form>
 	</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
