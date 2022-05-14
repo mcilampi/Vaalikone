@@ -8,30 +8,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add question</title>
-</head>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<title>Lisää kysymys</title>
 
-<!-- jQuery library -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="/css/style.css" rel="stylesheet">
 
-<!-- Popper JS -->
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-#div1 {
-	width: 500px;
-	height: 510px;
-	margin: auto;
-	margin-top: 100px;
-}
-</style>
 <script>
 	function insertValue(valueToBeInserted) {
 		document.querySelector('input[name="tunniste"]').value = valueToBeInserted	;
@@ -48,7 +29,7 @@ function addQuestion(form) {
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if (this.responseText == "ok") {
-				document.getElementById("result").innerHTML = "Lisäys onnistui!";
+				document.getElementById("result").innerHTML = "Kysymys lisätty tietokantaan onnistuneesti!";
 					form.kysymys.value = "";
 					form.tunniste.value = "";
 			}
@@ -63,30 +44,39 @@ function addQuestion(form) {
 }
 </script>
 
+</head>
+
+
 
 <body class="container-fluid">
 <div class="card" id="div1">
-<h2 class="card-header text-center text-light bg-primary">Lisää kysymys tietokantaan</h2>
+<h2 class="card-header text-center text-light " id="header1">Lisää kysymys tietokantaan</h2>
 <form>
-	<table>
+	<table  class="table table-hover table-striped">
 		<tr>
-		<td>Kysymys:</td><td><textarea id="kysymys" name="kysymys" rows="5" cols="30"></textarea></td>
+		<td>Kysymys:</td><td><textarea id="kysymys" name="kysymys" class="form-control" rows="3"></textarea></td>
 		</tr>
 		<tr>
-		<td>Tunniste:</td><td> <input type='text' name='tunniste' value=''><br>
+		<td>Tunniste:</td><td> <input type='text' name='tunniste' value=''  class="form-control" aria-label="Username" aria-describedby="basic-addon1"><br>
 		<c:forEach var="tag" items="${requestScope.tunnisteet }">
-			<button type="button" value="${tag }" onClick="insertValue(this.value)" >${tag }</button>
+			<button type="button" value="${tag }" onClick="insertValue(this.value)"  class="btn btn-info btn-sm" id="partybutton">${tag }</button>
 		</c:forEach>
 		</td>
 		</tr>
 		<tr>
-		<td colspan="2"><input type='button' name='ok' value='OK' onclick='addQuestion(this.form);'></td>
+		<td colspan="2"><input type='button' name='ok' value='Tallenna kysymys' onclick='addQuestion(this.form);' class="btn btn-outline-success">
+		<input type="reset" value="Tyhjennä lomake"
+						class="btn btn-outline-danger"></td>
+		<td></td>
 		</tr>
-		<tr><td colspan="2" id="result">Tähän tulee ilmoitus, jos tietokantaan lisääminen onnistui!</td>
+		<tr><td colspan="2" id="result">
+		</td>
+		
 		</tr>
 	</table>
 </form>
-<a href="../index.html">Takaisin etusivulle</a>
+<a href="../index.html" class="text-decoration-none">Takaisin etusivulle</a>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
