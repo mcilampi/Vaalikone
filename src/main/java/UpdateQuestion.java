@@ -32,7 +32,7 @@ public class UpdateQuestion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter pw = response.getWriter();
+
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		Kysymys kysymys = new Kysymys();
 		kysymys = Dao.readOneKysymysFromDatabase(con, Dao.queryy, Integer.parseInt(request.getParameter("id")));
@@ -43,13 +43,13 @@ public class UpdateQuestion extends HttpServlet {
 		
 		int rowsAffected = Dao.updateEntryQuestion(con, kysymys);
 		
-		if(rowsAffected == 0) {
-			pw.println("Kysymyksen päivitys ei onnistunut.");
-		}else {
-			pw.println("Kysymyksen päivitys onnistui!");
-			pw.println("<p><a href='index.html'>Palaa etusivulle.</a>");
+		String onnistuiko = null;
+		if (rowsAffected > 0) {
+			onnistuiko = "Ehdokkaan tiedot tallennettu onnistuneesti!";
 		}
-		pw.close();
+		response.setHeader("onnistuiko", onnistuiko);
+		response.sendRedirect(request.getContextPath()+"/editQuestions?tag=all");
+
 		Dao.closeDatabaseConnection(con);
 	}
 
