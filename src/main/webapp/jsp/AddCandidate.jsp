@@ -77,14 +77,14 @@ function validateForm() {
 					<td><input type="text" name="puolue" id="puolue" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
 					<p>
 					<c:forEach var="puolue" items="${requestScope.puoluelista }">
-						<button type="button" value="${puolue }" onClick="insertValue(this.value)"  class="btn btn-info" id="partybutton">${puolue }</button>
+						<button type="button" value="${puolue }" onClick="insertValue(this.value)"  class="btn btn-info btn-sm" id="partybutton">${puolue }</button>
 					</c:forEach>
 					
 					</td>
 				</tr>
 				<tr>
 					<td>Esittely:</td>
-					<td><textarea id="esittely" name="esittely" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea></td>
+					<td><textarea id="esittely" name="esittely" class="form-control" rows="6"></textarea></td>
 				</tr>
 				<tr>
 					<td>Ehdokasnumero:</td>
