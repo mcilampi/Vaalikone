@@ -37,7 +37,7 @@
 </head>
 <body>
 <div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Lisää kysymys tietokantaan</h2>
+		<h2 class="card-header text-center text-light bg-primary">Lue tai muokkaa kysymyksiä</h2>
 <table>	
 	<tr>
 	<th>ID</th>
