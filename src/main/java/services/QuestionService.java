@@ -118,12 +118,10 @@ public class QuestionService {
 		em.getTransaction().commit();
 		ArrayList<Kysymys> tunnisteelliset = new ArrayList<Kysymys>();
 		if(tag.equalsIgnoreCase("all")) {
-			tunnisteelliset.clear();
 			for (Kysymys k: kysymykset) {
 				tunnisteelliset.add(k);
 			}
 		} else {
-			tunnisteelliset.clear();
 			for (Kysymys k: kysymykset) {
 				if (k.getTunniste().equalsIgnoreCase(tag)) {
 					tunnisteelliset.add(k);
