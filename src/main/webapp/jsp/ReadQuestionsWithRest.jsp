@@ -19,7 +19,7 @@
 </head>
 <body>
 <div class="card" id="div1">
-		<h2 class="card-header text-center text-light"  id="header1">Lue tai muokkaa kysymyksiä</h2>
+		<h2 class="card-header text-center text-light"  id="header1">Muokkaa kysymyksiä</h2>
 <a href='/index.html' class="text-decoration-none">Palaa ehdokkaiden ylläpitosivulle</a>
 <table  class="table table-hover table-striped">	
 	<tr>
