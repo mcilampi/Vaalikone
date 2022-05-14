@@ -29,7 +29,7 @@ function addQuestion(form) {
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if (this.responseText == "ok") {
-				document.getElementById("result").innerHTML = "Kysymys lisätty tietokantaan onnistuneesti!";
+				document.getElementById("result").innerHTML = "<div class='alert alert-success alert-dismissible fade show' role='alert'> <strong>Onneksi olkoon!</strong> Kysymys lisätty onnistuneesti tietokantaan. <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
 					form.kysymys.value = "";
 					form.tunniste.value = "";
 			}
