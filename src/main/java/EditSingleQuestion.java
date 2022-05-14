@@ -36,7 +36,6 @@ public class EditSingleQuestion extends HttpServlet {
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		ArrayList<String> tunnisteet = Dao.readDistinctTags(con);
 		for (int i = 0; i < tunnisteet.size(); i++) {
-			System.out.println(tunnisteet.get(i));
 			if ((tunnisteet.get(i) == null) || (tunnisteet.get(i).equals(""))) {
 				tunnisteet.remove(i);
 			}

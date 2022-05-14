@@ -34,7 +34,6 @@ public class getFormDataToAddQuestion extends HttpServlet {
 		
 		ArrayList<String> tunnisteet = Dao.readDistinctTags(con);
 		for (int i = 0; i < tunnisteet.size(); i++) {
-			System.out.println(tunnisteet.get(i));
 			if ((tunnisteet.get(i) == null) || (tunnisteet.get(i).equals(""))) {
 				tunnisteet.remove(i);
 			}
