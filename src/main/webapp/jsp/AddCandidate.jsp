@@ -77,7 +77,7 @@ function validateForm() {
 					<td><input type="text" name="puolue" id="puolue" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
 					<p>
 					<c:forEach var="puolue" items="${requestScope.puoluelista }">
-						<button type="button" value="${puolue }" onClick="insertValue(this.value)" >${puolue }</button>
+						<button type="button" value="${puolue }" onClick="insertValue(this.value)"  class="btn btn-info" id="partybutton">${puolue }</button>
 					</c:forEach>
 					
 					</td>

@@ -15,11 +15,13 @@
 <body class="container-fluid">
 	<div class="card" id="div1">
 		<h2 class="card-header text-center text-light"  id="header1">Muokkaa ehdokkaita</h2>
-		<table>
-			<tr><td><a href="/editCandidates?sorter=2" class="text-decoration-none">Numero</a></td><td><a href="/editCandidates?sorter=1" class="text-decoration-none">Nimi</a></td><td><a href="/editCandidates?sorter=3" class="text-decoration-none">Puolue</a></td><td></td></tr>
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr><th scope="col"><a href="/editCandidates?sorter=2" class="text-decoration-none">Numero</a></th><th scope="col"><a href="/editCandidates?sorter=1" class="text-decoration-none">Nimi</a></th><th scope="col"><a href="/editCandidates?sorter=3" class="text-decoration-none">Puolue</a></th><th scope="col"></th><th  scope="col"></th></tr>
+			</thead>
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td> ${ehdokas.getSukunimi()} ${ehdokas.getEtunimi()}</td> <td>${ehdokas.getPuolue()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')"  class="text-decoration-none">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}' class="text-decoration-none">Muokkaa</a> </td></tr>
+				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td> ${ehdokas.getSukunimi()} ${ehdokas.getEtunimi()}</td> <td>${ehdokas.getPuolue()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')"  class="btn btn-danger btn-sm">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}' class="btn btn-warning btn-sm">Muokkaa</a> </td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		
