@@ -23,17 +23,23 @@
 <a href='/index.html' class="text-decoration-none">Palaa ehdokkaiden ylläpitosivulle</a>
 <table  class="table table-hover table-striped">	
 	<tr>
-	<th>ID</th>
-	<th>Kysymys</th>
-	<th>Tunniste</th>
-	<th>Poista</th>
-	<th>Muokkaa</th>
+	<th scope="col">ID</th>
+	<th scope="col">Kysymys</th>
+	<th scope="col"><label>Tunniste: </label><select name="forma" onchange="location = this.value;" class="form-select form-select-sm" aria-label=".form-select-lg example">
+				 	<option value="/rest/questionService/getQuestionsList/${kysymys.getTunniste() }">Valitse</option>
+				 	<c:forEach var="tunniste" items="${requestScope.tunnisteet}">
+				 		<option value="/editQuestions?tag=${tunniste }">${tunniste }</option>
+				 	</c:forEach>
+				 	<option value="/editQuestions?tag=all">Kaikki</option>
+				</select></th>
+	<th scope="col">Poista</th>
+	<th scope="col">Muokkaa</th>
 	</tr>
 	<c:forEach var="kysymys" items="${requestScope.kysymykset }">
 	<tr>
 	<td>${kysymys.getId()}</td>
 	<td>${kysymys.getKysymys() }</td>
-	<td>${kysymys.getTunniste() }</td>
+	<td><a href="/rest/questionService/getQuestionsList/${kysymys.getTunniste() }" class="btn btn-info btn-sm" id="partybutton">${kysymys.getTunniste() }</a></td>
 	<td><a href='/rest/questionService/updateQuestionRestful/${kysymys.id}' class="btn btn-warning btn-sm">Muokkaa</a></td>
 	<td><a href='/rest/questionService/deleteQuestionRestful/${kysymys.id}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')" class="btn btn-danger btn-sm">Poista</a></td>
 

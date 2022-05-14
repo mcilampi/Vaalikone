@@ -108,16 +108,30 @@ public class QuestionService {
 	}
 	
 	@GET
-	@Path("/getQuestionsList")
+	@Path("/getQuestionsList/{tag}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void getQuestionList(@Context HttpServletRequest request, @Context HttpServletResponse response){
+	public void getQuestionList(@PathParam("tag") String tag, @Context HttpServletRequest request, @Context HttpServletResponse response){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		List<Kysymys> kysymykset = em.createQuery("select a from Kysymys a").getResultList();
 		em.getTransaction().commit();
+		ArrayList<Kysymys> tunnisteelliset = new ArrayList<Kysymys>();
+		if(tag.equalsIgnoreCase("all")) {
+			tunnisteelliset.clear();
+			for (Kysymys k: kysymykset) {
+				tunnisteelliset.add(k);
+			}
+		} else {
+			tunnisteelliset.clear();
+			for (Kysymys k: kysymykset) {
+				if (k.getTunniste().equalsIgnoreCase(tag)) {
+					tunnisteelliset.add(k);
+				}
+			}
+		}
 		RequestDispatcher disp = request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
-		request.setAttribute("kysymykset", kysymykset);
+		request.setAttribute("kysymykset", tunnisteelliset);
 		try {
 			disp.forward(request, response);
 		} catch (ServletException | IOException e) {
