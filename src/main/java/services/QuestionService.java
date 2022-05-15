@@ -160,6 +160,18 @@ public class QuestionService {
 		List<Kysymys> kysymykset = em.createQuery("select a from Kysymys a").getResultList();
 		em.getTransaction().commit();
 		ArrayList<Kysymys> tunnisteelliset = new ArrayList<Kysymys>();
+		ArrayList<String> tunnisteet = new ArrayList<String>();
+		for (Kysymys kyssari: kysymykset) {
+			boolean listassa = false;
+			for (String tunniste: tunnisteet) {
+				if (kyssari.getTunniste().equalsIgnoreCase(tunniste)) {
+					listassa = true;
+				}
+			}
+			if (!listassa) {
+				tunnisteet.add(kyssari.getTunniste());
+			}
+		}
 		if(tag.equalsIgnoreCase("all")) {
 			for (Kysymys k: kysymykset) {
 				tunnisteelliset.add(k);
@@ -172,6 +184,7 @@ public class QuestionService {
 			}
 		}
 		RequestDispatcher disp = request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
+		request.setAttribute("tunnisteet", tunnisteet);
 		request.setAttribute("kysymykset", tunnisteelliset);
 		try {
 			disp.forward(request, response);

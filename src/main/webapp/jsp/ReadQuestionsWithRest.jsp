@@ -33,9 +33,9 @@
 	<th scope="col"><label>Tunniste: </label><select name="forma" onchange="location = this.value;" class="form-select form-select-sm" aria-label=".form-select-lg example">
 				 	<option value="/rest/questionService/getQuestionsList/${kysymys.getTunniste() }">Valitse</option>
 				 	<c:forEach var="tunniste" items="${requestScope.tunnisteet}">
-				 		<option value="/editQuestions?tag=${tunniste }">${tunniste }</option>
+				 		<option value="/rest/questionService/getQuestionsList/${tunniste }">${tunniste }</option>
 				 	</c:forEach>
-				 	<option value="/editQuestions?tag=all">Kaikki</option>
+				 	<option value="/rest/questionService/getQuestionsList/all">Kaikki</option>
 				</select></th>
 	<th scope="col">Poista</th>
 	<th scope="col">Muokkaa</th>
@@ -44,7 +44,7 @@
 	<tr>
 	<td>${kysymys.getId()}</td>
 	<td>${kysymys.getKysymys() }</td>
-	<td><a href="/rest/questionService/getQuestionsList/${kysymys.getTunniste() }" class="btn btn-info btn-sm" id="partybutton">${kysymys.getTunniste() }</a></td>
+	<td><a href="/rest/questionService/getQuestionsList/${kysymys.getTunniste() }" class="btn btn-info btn-sm" >${kysymys.getTunniste() }</a></td>
 	<td><a href='/rest/questionService/readOneQuestionRestful/${kysymys.id}' class="btn btn-warning btn-sm">Muokkaa</a></td>
 	<td><a href='/rest/questionService/deleteQuestionRestful/${kysymys.id}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')" class="btn btn-danger btn-sm">Poista</a></td>
 
