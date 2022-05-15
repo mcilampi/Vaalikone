@@ -39,7 +39,7 @@
 			</thead>
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="kysymys" items="${requestScope.kysymykset}">
-				<tr><td>${kysymys.getId()}.</td><td> <div style="word-wrap: break-word;">${kysymys.getKysymys()}</div></td><td><a href="/editQuestions?tag=${kysymys.getTunniste() }" class="btn btn-info btn-sm" id="partybutton">${kysymys.getTunniste() }</a></td> <td> <a href='/editQuestion?id=${kysymys.getId()}' class="btn btn-warning btn-sm">Muokkaa</a> </td> <td><a href='/deleteQ?id=${kysymys.getId()}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')" class="btn btn-danger btn-sm">Poista</a></td></tr>
+				<tr><td>${kysymys.getId()}.</td><td> <div style="word-wrap: break-word;">${kysymys.getKysymys()}</div></td><td><a href="/editQuestions?tag=${kysymys.getTunniste() }" class="btn btn-info btn-sm">${kysymys.getTunniste() }</a></td> <td> <a href='/editQuestion?id=${kysymys.getId()}' class="btn btn-warning btn-sm">Muokkaa</a> </td> <td><a href='/deleteQ?id=${kysymys.getId()}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')" class="btn btn-danger btn-sm">Poista</a></td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		

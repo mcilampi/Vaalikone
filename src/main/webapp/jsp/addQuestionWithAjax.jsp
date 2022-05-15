@@ -67,15 +67,19 @@ function addQuestion(form) {
 		<td colspan="2"><input type='button' name='ok' value='Tallenna kysymys' onclick='addQuestion(this.form);' class="btn btn-outline-success">
 		<input type="reset" value="Tyhjennä lomake"
 						class="btn btn-outline-danger"></td>
-		<td></td>
+		
 		</tr>
-		<tr><td colspan="2" id="result">
+		<tr><td colspan="3" id="result">
 		</td>
 		
 		</tr>
+
 	</table>
 </form>
-<a href="../index.html" class="text-decoration-none">Takaisin etusivulle</a>
+<table>
+	<tr>
+	<td><a href="../index.html" class="text-decoration-none">Takaisin etusivulle</a></td><td id="candidate-cell"><a href="/rest/questionService/getQuestionsList/all" class="text-decoration-none">Takaisin kysymyslistaan</a></td></tr>
+</table>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
