@@ -8,21 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Muokkaa Kysymystä</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="/css/style.css" rel="stylesheet">
 
-<!-- Popper JS -->
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 function insertValue(valueToBeInserted) {
 	document.querySelector('input[name="tunniste"]').value = valueToBeInserted	;
@@ -42,27 +31,13 @@ function validateForm() {
 	}
 }
 </script>
-<style>
-#div1 {
-	width: 500px;
-	height: 600px;
-	margin: auto;
-	margin-top: 100px;
-}
-label,
-esittely{
-	display:inline-block;
-  	vertical-align:middle;
-}
-</style>
+
 </head>
 <body>
 <div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Muokkaa kysymyksen tietoja</h2>
+		<h2 class="card-header text-center text-light" id="header1">Muokkaa kysymyksen tietoja</h2>
 		<form action="UpdateQuestion" method="post">
-		<table>
-				<tr>
-		
+		<table  class="table table-hover table-striped">
 			<tr>
 			<td>
 			Kysymyksen ID 
@@ -74,16 +49,16 @@ esittely{
 		 	<td>
 			Kysymys: 
 			</td>
-			<td><textarea id="kysymys" name="kysymys" rows="15" cols="35">${requestScope.kysymys.getKysymys()}</textarea><br>
+			<td><textarea id="kysymys" name="kysymys"  class="form-control" rows="3">${requestScope.kysymys.getKysymys()}</textarea><br>
 			</td>
 		</tr>
 				 <tr>
 		 	<td>
 			Tunniste: (kirjoita uusi tai valitse napilla)
 			</td>
-			<td><input type="text" id="tunniste" name="tunniste" value="${requestScope.kysymys.getTunniste()}"><br>
+			<td><input type="text" id="tunniste" name="tunniste" value="${requestScope.kysymys.getTunniste()}"  class="form-control" aria-label="Username" aria-describedby="basic-addon1"><br>
 					<c:forEach var="tag" items="${requestScope.tunnisteet }">
-						<button type="button" value="${tag }" onClick="insertValue(this.value)" >${tag }</button>
+						<button type="button" value="${tag }" onClick="insertValue(this.value)"  class="btn btn-info btn-sm" id="partybutton">${tag }</button>
 					</c:forEach>
 			</td>
 		</tr>
@@ -96,13 +71,15 @@ esittely{
 		</table>
 		<tr>
 			<td>
-			<input type='submit' name='update' value='Tallenna tiedot'>
+			<input type='submit' name='update' value='Tallenna tiedot' class="btn btn-outline-success">
 			</td>
+			<td><a href='/editQuestions?tag=all'  class="btn btn-outline-danger">Hylkää muutokset ja palaa kysymysten ylläpitosivulle</a></td>
 		</tr> 
 		</form>
 			
-		<p><a href='index.html'>Palaa kysymysten ylläpitosivulle</a>
+		<p>
 		
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

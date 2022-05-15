@@ -40,7 +40,6 @@ public class editQuestions extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection con = Dao.createDatabaseConnection(Dao.DBpath, Dao.username, Dao.password);
 		String tag = request.getParameter("tag").toString();
-		System.out.println("Tag is " + tag);
 		List<Kysymys> kysymykset = new ArrayList<Kysymys>();
 		if (tag.equalsIgnoreCase("all")) {
 			kysymykset = Dao.readAllQuestionsFromDatabase(con);
@@ -49,7 +48,6 @@ public class editQuestions extends HttpServlet {
 		}
 		ArrayList<String> tunnisteet = Dao.readDistinctTags(con);
 		for (int i = 0; i < tunnisteet.size(); i++) {
-			System.out.println(tunnisteet.get(i));
 			if ((tunnisteet.get(i) == null) || (tunnisteet.get(i).equals(""))) {
 				tunnisteet.remove(i);
 			}

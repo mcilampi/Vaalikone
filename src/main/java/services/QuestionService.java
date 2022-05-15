@@ -34,17 +34,6 @@ import data.Kysymys;
 public class QuestionService {
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory("questionapp");
 	
-//	@POST
-//	@Path("/addQuestionRestful")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Kysymys addQuestionRestful(Kysymys kysymys) {
-//		System.out.println(kysymys.getKysymys());
-//		kysymys.setKysymys(kysymys.getKysymys() + " modified");
-//		System.out.println(kysymys.getKysymys());
-//		return kysymys;
-//	}
-	
 	@GET
 	@Path("/readQuestions")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -57,27 +46,6 @@ public class QuestionService {
 		return list;
 	}
 
-	
-//	@DELETE
-//	@Path("/deleteQuestionRestful/{id}")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Kysymys> deleteQuestionsRestful(@PathParam("id") int id) {
-//		EntityManager em=emf.createEntityManager();
-//		em.getTransaction().begin();
-//		Kysymys f=em.find(Kysymys.class, id);
-//		if (f!=null) {
-//			em.remove(f);//The actual insertion line
-//		}
-//		em.getTransaction().commit();
-//		//Calling the method readFish() of this service
-//		List<Kysymys> list=readQuestion();		
-//		return list;
-//		
-//		}
-	
-
-	
 	@GET
 	@Path("/deleteQuestionRestful/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -124,18 +92,6 @@ public class QuestionService {
 		return list;
 	}
 	
-//	@GET
-//	@Path("/updateQuestionRestful/{id}")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public Kysymys updateQuestionRestful(@PathParam("id") int id) {
-//		EntityManager em=emf.createEntityManager();
-//		em.getTransaction().begin();
-//		Kysymys f=em.find(Kysymys.class, id);
-//		em.getTransaction().commit();
-//		return f;
-//	}
-	
 	
 	@PUT
 	@Path("/addQuestionRestful")
@@ -146,28 +102,34 @@ public class QuestionService {
 		em.getTransaction().begin();
 		em.persist(kysymys);
 		em.getTransaction().commit();
-		System.out.println(kysymys.getKysymys());
 		kysymys.setKysymys(kysymys.getKysymys() + " modified");
-		System.out.println(kysymys.getKysymys());
 		
 		return "ok";
 	}
 	
 	@GET
-	@Path("/getQuestionsList")
+	@Path("/getQuestionsList/{tag}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void getQuestionList(@Context HttpServletRequest request, @Context HttpServletResponse response){
-		System.out.println("Here we go");
+	public void getQuestionList(@PathParam("tag") String tag, @Context HttpServletRequest request, @Context HttpServletResponse response){
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		List<Kysymys> kysymykset = em.createQuery("select a from Kysymys a").getResultList();
 		em.getTransaction().commit();
-		RequestDispatcher disp = request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
-		request.setAttribute("kysymykset", kysymykset);
-		for (Kysymys k: kysymykset) {
-			System.out.println(k.getKysymys());
+		ArrayList<Kysymys> tunnisteelliset = new ArrayList<Kysymys>();
+		if(tag.equalsIgnoreCase("all")) {
+			for (Kysymys k: kysymykset) {
+				tunnisteelliset.add(k);
+			}
+		} else {
+			for (Kysymys k: kysymykset) {
+				if (k.getTunniste().equalsIgnoreCase(tag)) {
+					tunnisteelliset.add(k);
+				}
+			}
 		}
+		RequestDispatcher disp = request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
+		request.setAttribute("kysymykset", tunnisteelliset);
 		try {
 			disp.forward(request, response);
 		} catch (ServletException | IOException e) {

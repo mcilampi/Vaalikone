@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +45,7 @@ public class addQuestion extends HttpServlet {
 			pw.print("Kysymyksen lisääminen tietokantaan onnistui!");
 			pw.print("<a href='/editQuestions?tag=all'>Palaa tarkastelemaan kysymyksiä.</a>");
 		}
-		
+
 		pw.close();
 		Dao.closeDatabaseConnection(con);
 

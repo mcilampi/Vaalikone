@@ -44,13 +44,19 @@ public class Update extends HttpServlet {
 
 		
 		int rowsAffected = Dao.updateEntry(con, ehdokas);
-		
-		if(rowsAffected == 0) {
-			pw.println("Ehdokkaan tietojen päivitys ei onnistunut.");
-		}else {
-			pw.println("Ehdokkaan tietojen päivitys onnistui!");
-			pw.println("<p><a href='/editCandidates?sorter=2'>Palaa ehdokkaiden ylläpitosivulle.</a>");
+//		
+//		if(rowsAffected == 0) {
+//			pw.println("Ehdokkaan tietojen päivitys ei onnistunut.");
+//		}else {
+//			pw.println("Ehdokkaan tietojen päivitys onnistui!");
+//			pw.println("<p><a href='/editCandidates?sorter=2'>Palaa ehdokkaiden ylläpitosivulle.</a>");
+//		}
+		String onnistuiko = null;
+		if (rowsAffected > 0) {
+			onnistuiko = "Ehdokkaan tiedot tallennettu onnistuneesti!";
 		}
+		response.setHeader("onnistuiko", onnistuiko);
+		response.sendRedirect(request.getContextPath()+"/editCandidates?sorter=2");
 		pw.close();
 		Dao.closeDatabaseConnection(con);
 	}

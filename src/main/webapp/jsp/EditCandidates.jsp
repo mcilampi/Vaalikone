@@ -9,44 +9,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Muokkaa tai poista ehdokkaita</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-
-<!-- Popper JS -->
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-#div1 {
-	width: 600px;
-	height: 510px;
-	margin: auto;
-	margin-top: 100px;
-}
-</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="/css/style.css" rel="stylesheet">
 </head>
 <body class="container-fluid">
 	<div class="card" id="div1">
-		<h2 class="card-header text-center text-light bg-primary">Muokkaa ehdokkaita</h2>
+		<h2 class="card-header text-center text-light"  id="header1">Muokkaa ehdokkaita</h2>
 		<table>
-			<tr><td><a href="/editCandidates?sorter=2">Numero</a></td><td><a href="/editCandidates?sorter=1">Nimi</a></td><td><a href="/editCandidates?sorter=3">Puolue</a></td><td></td></tr>
+			<tr></tr>
+				<td><a href='index.html'  class="text-decoration-none">Palaa ylläpitosivulle</a></td>
+				<td id="candidate-cell"><a href="/getFormDataToAddCandidate" class="text-decoration-none">Rekisteröi uusi ehdokas</a></td>
+				</tr>
+		</table>
+		
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr><th scope="col"><a href="/editCandidates?sorter=2" class="text-decoration-none">Numero</a></th><th scope="col"><a href="/editCandidates?sorter=1" class="text-decoration-none">Nimi</a></th><th scope="col"><a href="/editCandidates?sorter=3" class="text-decoration-none">Puolue</a></th><th scope="col"></th><th  scope="col"></th></tr>
+			</thead>
 			<c:set var="counter" value="1" scope="page"/>
 			<c:forEach var="ehdokas" items="${requestScope.ehdokasLista}">
-				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td> ${ehdokas.getSukunimi()} ${ehdokas.getEtunimi()}</td> <td>${ehdokas.getPuolue()}</td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')">Poista</a></td><td> <a href='/edit?id=${ehdokas.getId()}'>Muokkaa</a> </td></tr>
+				<tr><td>${ehdokas.getEhdokasNumero()}.</td><td> ${ehdokas.getSukunimi()} ${ehdokas.getEtunimi()}</td> <td>${ehdokas.getPuolue()}</td><td> <a href='/edit?id=${ehdokas.getId()}' class="btn btn-warning btn-sm">Muokkaa</a> </td> <td><a href='/delete?id=${ehdokas.getId()}' onclick="return confirm('Oletko varma että haluat poistaa ehdokkaan?')" class="btn btn-danger btn-sm">Poista</a></td></tr>
 				<c:set var="counter" value="${counter + 1}" scope="page"/>
 			</c:forEach>
 		
 		</table>		
-		<p><a href='index.html'>Palaa ylläpitosivulle</a>
+		<p><a href='index.html'  class="text-decoration-none">Palaa ylläpitosivulle</a>
 		
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

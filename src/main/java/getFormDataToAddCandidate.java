@@ -49,10 +49,6 @@ public class getFormDataToAddCandidate extends HttpServlet {
 			
 		}
 		
-		for (String puolue: puolueLista) {
-			System.out.println(puolue);
-			System.out.println("test");
-		}
 		request.setAttribute("puoluelista", puolueLista);
 		request.setAttribute("ehdokasnumerot", ehdokasNumerot);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("./jsp/AddCandidate.jsp");
