@@ -96,7 +96,7 @@ public class QuestionService {
 
 		List<Kysymys> list=readQuestion();		
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/rest/questionService/getQuestionsList");
 		request.setAttribute("questionlist", list);
 		try {
 			rd.forward(request, response);
