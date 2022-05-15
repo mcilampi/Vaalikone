@@ -45,7 +45,7 @@
 	<td>${kysymys.getId()}</td>
 	<td>${kysymys.getKysymys() }</td>
 	<td><a href="/rest/questionService/getQuestionsList/${kysymys.getTunniste() }" class="btn btn-info btn-sm" id="partybutton">${kysymys.getTunniste() }</a></td>
-	<td><a href='/rest/questionService/updateQuestionRestful/${kysymys.id}' class="btn btn-warning btn-sm">Muokkaa</a></td>
+	<td><a href='/rest/questionService/readOneQuestionRestful/${kysymys.id}' class="btn btn-warning btn-sm">Muokkaa</a></td>
 	<td><a href='/rest/questionService/deleteQuestionRestful/${kysymys.id}' onclick="return confirm('Oletko varma että haluat poistaa kysymyksen?')" class="btn btn-danger btn-sm">Poista</a></td>
 
 	<tr>
