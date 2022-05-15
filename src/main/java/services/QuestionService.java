@@ -61,13 +61,15 @@ public class QuestionService {
 			em.remove(f);
 		}
 		em.getTransaction().commit();
+				
+		em.getTransaction().begin();
+		List<Kysymys> kysymykset = em.createQuery("select a from Kysymys a").getResultList();
+		em.getTransaction().commit();
 
-		List<Kysymys> list=readQuestion();		
-		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
-		request.setAttribute("questionlist", list);
+		RequestDispatcher disp = request.getRequestDispatcher("/jsp/ReadQuestionsWithRest.jsp");
+		request.setAttribute("kysymykset", kysymykset);
 		try {
-			rd.forward(request, response);
+			disp.forward(request, response);
 		} catch (ServletException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
